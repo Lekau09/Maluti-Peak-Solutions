@@ -27,6 +27,46 @@
   --font-head:   'Poppins', sans-serif;
   --font-body:   'Inter', sans-serif;
 }
+/* ── Site Header ────────────────────────────────────────── */
+.site-header {
+  background: rgb(100, 100, 222);
+  padding: 12px 0;
+  border-bottom: 2px solid var(--gold);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1001;
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.site-header__logo {
+  height: 48px;
+  width: auto;
+}
+
+.site-header__name {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.3px;
+  line-height: 1.2;
+}
+
+.site-header__name span {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--gold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html  { scroll-behavior: smooth; font-size: 16px; }
@@ -162,12 +202,13 @@ p:last-child { margin-bottom: 0; }
 /* ── 5. Navigation ────────────────────────────────────────── */
 .nav {
   position: fixed;
-  top: 0; left: 0;
+  top: 72px; left: 0;
   width: 100%;
   z-index: 1000;
-  background: var(--navy-dark);
-  box-shadow: 0 2px 20px rgba(13,31,60,0.4);
-  transition: background var(--transition);
+  background: transparent;
+  box-shadow: none;
+  transition: background 0.3s ease;
+
 }
 
 .nav__inner {
@@ -266,7 +307,7 @@ p:last-child { margin-bottom: 0; }
   align-items: center;
   position: relative;
   overflow: hidden;
-  padding-top: 72px;
+  padding-top: 144px;
   background:
     url('../images/hero-bg.jpg') center/cover no-repeat;
   background-color: var(--navy-dark);
@@ -712,7 +753,7 @@ p:last-child { margin-bottom: 0; }
 /* ── 13. Page Hero (inner pages) ──────────────────────────── */
 .page-hero {
   background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
-  padding: 9rem 0 5.5rem;
+  padding: 11rem 0 5.5rem;
   color: var(--white);
   position: relative;
   overflow: hidden;

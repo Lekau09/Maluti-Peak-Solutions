@@ -7,41 +7,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ── Sticky Nav + Scroll Behaviour ─────────────────────── */
   const nav = document.querySelector('.nav');
+  nav.style.background = 'transparent';
 
   window.addEventListener('scroll', function () {
-    if (window.scrollY > 20) {
-      nav.style.boxShadow = '0 4px 24px rgba(13,31,60,0.35)';
-    } else {
-      nav.style.boxShadow = '0 2px 16px rgba(13,31,60,0.3)';
-    }
-    /* ── Portfolio & Blog Filter Buttons ────────────────────── */
-document.querySelectorAll('.filter-btn').forEach(function (btn) {
-  btn.addEventListener('click', function () {
-    // Update active button
-    const allBtns = btn.closest('[data-aos]') 
-      ? btn.parentElement.querySelectorAll('.filter-btn')
-      : document.querySelectorAll('.filter-btn');
-    btn.parentElement.querySelectorAll('.filter-btn').forEach(function (b) {
-      b.classList.remove('filter-btn--active');
-    });
-    btn.classList.add('filter-btn--active');
-
-    const filter = btn.getAttribute('data-filter');
-
-    // Find the cards grid (next sibling .row)
-    const grid = btn.closest('.d-flex').nextElementSibling;
-    if (!grid) return;
-
-    grid.querySelectorAll('[data-category]').forEach(function (card) {
-      if (filter === 'all' || card.getAttribute('data-category') === filter) {
-        card.style.display = '';
-      } else {
-        card.style.display = 'none';
-      }
-    });
-  });
+  if (window.scrollY > 20) {
+    nav.style.background = 'var(--navy-dark)';
+    nav.style.boxShadow = '0 4px 24px rgba(13,31,60,0.35)';
+  } else {
+    nav.style.background = 'transparent';
+    nav.style.boxShadow = 'none';
+  }
 });
-  });
+   
+
+  
 
   /* ── Mobile Hamburger Menu ──────────────────────────────── */
   const hamburger = document.querySelector('.nav__hamburger');
@@ -178,7 +157,27 @@ document.querySelectorAll('.filter-btn').forEach(function (btn) {
       }
     });
   }
+  /* ── Portfolio & Blog Filter Buttons ────────────────────── */
+   document.querySelectorAll('.filter-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      btn.parentElement.querySelectorAll('.filter-btn').forEach(function (b) {
+        b.classList.remove('filter-btn--active');
+      });
+      btn.classList.add('filter-btn--active');
 
+      var filter = btn.getAttribute('data-filter');
+      var grid = document.getElementById('portfolio-grid') || document.getElementById('blog-grid');
+      if (!grid) return;
+
+      grid.querySelectorAll('[data-category]').forEach(function (card) {
+        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
   /* ── Logo image fallback ────────────────────────────────── */
   // If logo image fails to load, show text fallback
   document.querySelectorAll('.nav__logo-img, .footer__logo').forEach(function (img) {
