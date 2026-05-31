@@ -14,6 +14,33 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       nav.style.boxShadow = '0 2px 16px rgba(13,31,60,0.3)';
     }
+    /* ── Portfolio & Blog Filter Buttons ────────────────────── */
+document.querySelectorAll('.filter-btn').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    // Update active button
+    const allBtns = btn.closest('[data-aos]') 
+      ? btn.parentElement.querySelectorAll('.filter-btn')
+      : document.querySelectorAll('.filter-btn');
+    btn.parentElement.querySelectorAll('.filter-btn').forEach(function (b) {
+      b.classList.remove('filter-btn--active');
+    });
+    btn.classList.add('filter-btn--active');
+
+    const filter = btn.getAttribute('data-filter');
+
+    // Find the cards grid (next sibling .row)
+    const grid = btn.closest('.d-flex').nextElementSibling;
+    if (!grid) return;
+
+    grid.querySelectorAll('[data-category]').forEach(function (card) {
+      if (filter === 'all' || card.getAttribute('data-category') === filter) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
   });
 
   /* ── Mobile Hamburger Menu ──────────────────────────────── */
