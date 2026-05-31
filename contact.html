@@ -1,0 +1,267 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — Maluti Peak Solutions</title>
+  <meta name="description" content="Get in touch with Maluti Peak Solutions. Tell us what you need and we'll come back to you with a clear plan and a fair quote." />
+  <meta property="og:title"       content="Contact — Maluti Peak Solutions" />
+  <meta property="og:description" content="Reach out to start your project." />
+  <meta property="og:type"        content="website" />
+
+  <!-- Bootstrap 5.3 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <!-- AOS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/png" href="images/logo.png" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════ NAVIGATION -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Maluti Peak Solutions home">
+        <img src="images/logo.png" alt="Maluti Peak Solutions logo" class="nav__logo-img" loading="lazy" />
+        <div class="nav__logo-text" style="display:none;">MPS<div class="nav__logo-sub">Maluti Peak Solutions</div></div>
+      </a>
+      <ul class="nav__links" id="navLinks">
+        <li class="nav__item"><a href="index.html"    class="nav__link">Home</a></li>
+        <li class="nav__item"><a href="about.html"    class="nav__link">About</a></li>
+        <li class="nav__item">
+          <a href="services.html" class="nav__link nav__link--has-dropdown" aria-haspopup="true">Services</a>
+          <ul class="nav__dropdown">
+            <li><a href="services/website-design.html"       class="nav__dropdown-link"><i class="bi bi-globe2 me-2"></i>Website Design</a></li>
+            <li><a href="services/blog-creation.html"        class="nav__dropdown-link"><i class="bi bi-pencil-square me-2"></i>Blog Creation</a></li>
+            <li><a href="services/cv-design.html"            class="nav__dropdown-link"><i class="bi bi-file-person me-2"></i>CV Design</a></li>
+            <li><a href="services/statistical-analysis.html" class="nav__dropdown-link"><i class="bi bi-graph-up me-2"></i>Statistical Analysis</a></li>
+          </ul>
+        </li>
+        <li class="nav__item"><a href="blog.html"      class="nav__link">Blog</a></li>
+        <li class="nav__item"><a href="portfolio.html" class="nav__link">Portfolio</a></li>
+        <li class="nav__item"><a href="contact.html"   class="nav__link nav__link--active">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="nav__cta">Get in Touch</a>
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════ PAGE HERO -->
+  <div class="page-hero">
+    <div class="container" data-aos="fade-up">
+      <span class="section__tag" style="background:rgba(245,166,35,0.15);color:var(--gold);">
+        <i class="bi bi-chat-dots-fill me-1"></i> Get in Touch
+      </span>
+      <h1>Contact Us</h1>
+      <p>Tell us what you're working on and we'll come back to you with a clear plan and a fair quote — no jargon, no pressure.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════ CONTACT LAYOUT -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-layout">
+
+        <!-- Left: Contact info -->
+        <div data-aos="fade-right">
+          <h2 style="margin-bottom:1.5rem;">Let's Start a Conversation</h2>
+          <p>Whether you have a specific project in mind or you're just exploring your options, we're happy to chat. Most inquiries get a response within 24 hours.</p>
+
+          <div class="mt-4">
+            <div class="contact-info__item">
+              <div class="contact-info__icon"><i class="bi bi-envelope-fill"></i></div>
+              <div class="contact-info__text">
+                <strong>Email</strong>
+                <span><a href="mailto:info@malutipeak.co.ls" style="color:var(--blue);">info@malutipeak.co.ls</a></span>
+              </div>
+            </div>
+            <div class="contact-info__item">
+              <div class="contact-info__icon"><i class="bi bi-telephone-fill"></i></div>
+              <div class="contact-info__text">
+                <strong>Phone / WhatsApp</strong>
+                <span><a href="tel:+26658398399" style="color:var(--blue);">+266 58 398 399</a></span>
+              </div>
+            </div>
+            <div class="contact-info__item">
+              <div class="contact-info__icon"><i class="bi bi-geo-alt-fill"></i></div>
+              <div class="contact-info__text">
+                <strong>Location</strong>
+                <span>Maseru, Lesotho</span>
+              </div>
+            </div>
+            <div class="contact-info__item">
+              <div class="contact-info__icon"><i class="bi bi-clock-fill"></i></div>
+              <div class="contact-info__text">
+                <strong>Response Time</strong>
+                <span>Usually within 24 hours on weekdays</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <p style="color:var(--navy); font-family:var(--font-head); font-weight:600; margin-bottom:0.75rem;">Find Us On</p>
+            <div class="social-links">
+              <a href="#" class="social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+              <a href="#" class="social-link" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+              <a href="#" class="social-link" aria-label="Twitter/X"><i class="bi bi-twitter-x"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Contact form -->
+        <div data-aos="fade-left">
+          <div class="contact-form">
+            <h3 style="margin-bottom:0.5rem;">Send Us a Message</h3>
+            <p style="font-size:0.875rem; margin-bottom:1.75rem;">Fill in the form below and we'll get back to you as soon as possible.</p>
+
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+              <input type="text" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off" />
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Full Name <span style="color:#dc2626;">*</span></label>
+                  <input type="text" id="name" name="name" placeholder="Your full name" required autocomplete="name" />
+                </div>
+                <div class="form-group">
+                  <label for="email">Email Address <span style="color:#dc2626;">*</span></label>
+                  <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone Number <span style="color:var(--text-muted); font-weight:400;">(optional)</span></label>
+                <input type="tel" id="phone" name="phone" placeholder="+266 xxxx xxxx" autocomplete="tel" />
+              </div>
+
+              <div class="form-group">
+                <label for="service">Service of Interest <span style="color:#dc2626;">*</span></label>
+                <select id="service" name="service" required>
+                  <option value="" disabled selected>Select a service…</option>
+                  <option value="website-design">Website Design &amp; Creation</option>
+                  <option value="blog-creation">Blog Creation &amp; Setup</option>
+                  <option value="cv-design">Professional CV Design</option>
+                  <option value="statistical-analysis">Statistical Analysis</option>
+                  <option value="multiple">Multiple Services</option>
+                  <option value="not-sure">Not Sure Yet</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Your Message <span style="color:#dc2626;">*</span></label>
+                <textarea id="message" name="message" placeholder="Tell us about your project or what you need. The more detail you give, the more specific we can be in our response." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn--primary" style="width:100%; justify-content:center; font-size:1rem; padding:1rem;">
+                <i class="bi bi-send-fill me-2"></i>Send Message
+              </button>
+
+              <div class="alert alert--success" role="alert">
+                <i class="bi bi-check-circle-fill me-2"></i>Your message has been sent! We'll get back to you within 24 hours.
+              </div>
+              <div class="alert alert--error" role="alert">
+                <i class="bi bi-exclamation-circle-fill me-2"></i>Something went wrong. Please try again, or email us directly at <a href="mailto:info@malutipeak.co.ls">info@malutipeak.co.ls</a>.
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ FAQ SECTION -->
+  <section class="section section--alt">
+    <div class="container" style="max-width:800px;">
+      <div class="section__header" data-aos="fade-up">
+        <span class="section__tag"><i class="bi bi-question-circle me-1"></i> FAQs</span>
+        <h2>Common Questions</h2>
+      </div>
+      <div class="d-flex flex-column gap-3" data-aos="fade-up">
+        <details class="faq-item">
+          <summary>How much do your services cost? <i class="bi bi-plus-lg"></i></summary>
+          <p>We don't have fixed prices because every project is different. We'll give you a clear, honest quote after you tell us what you need — no surprises, no hidden fees.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How long does a project take? <i class="bi bi-plus-lg"></i></summary>
+          <p>It depends on the service and scope. A CV typically takes 2–3 days. A basic website takes 1–2 weeks. We'll give you a realistic timeline when we discuss your project.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do you work with clients outside Lesotho? <i class="bi bi-plus-lg"></i></summary>
+          <p>Yes — all our services can be delivered remotely. We work via email, WhatsApp, and video calls, so location is not a barrier.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What do I need to provide to get started? <i class="bi bi-plus-lg"></i></summary>
+          <p>Just a description of what you need. We'll ask follow-up questions from there. For a website, we'll need your content and branding. For a CV, your experience history. For data analysis, your dataset and research questions.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="row g-4 footer__top">
+        <div class="col-lg-4 footer__brand">
+          <img src="images/logo.png" alt="Maluti Peak Solutions" class="footer__logo" loading="lazy" />
+          <p class="mt-3">A student-led digital consultancy providing affordable, modern digital services to students, entrepreneurs, and small businesses in Lesotho.</p>
+          <div class="footer__social mt-3">
+            <a href="#" class="footer__social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="footer__social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="footer__social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="footer__social-link" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <p class="footer__col-title">Services</p>
+          <ul class="footer__links">
+            <li><a href="services/website-design.html"       class="footer__link">Website Design</a></li>
+            <li><a href="services/blog-creation.html"        class="footer__link">Blog Creation</a></li>
+            <li><a href="services/cv-design.html"            class="footer__link">CV Design</a></li>
+            <li><a href="services/statistical-analysis.html" class="footer__link">Statistical Analysis</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <p class="footer__col-title">Company</p>
+          <ul class="footer__links">
+            <li><a href="about.html"     class="footer__link">About Us</a></li>
+            <li><a href="portfolio.html" class="footer__link">Portfolio</a></li>
+            <li><a href="blog.html"      class="footer__link">Blog</a></li>
+            <li><a href="contact.html"   class="footer__link">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 col-lg-4">
+          <p class="footer__col-title">Contact</p>
+          <ul class="footer__links">
+            <li><a href="mailto:info@malutipeak.co.ls" class="footer__link"><i class="bi bi-envelope me-2"></i>info@malutipeak.co.ls</a></li>
+            <li><a href="tel:+26658398399"             class="footer__link"><i class="bi bi-telephone me-2"></i>+266 58 398 399</a></li>
+            <li><span class="footer__link"><i class="bi bi-geo-alt me-2"></i>Maseru, Lesotho</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; <span id="year"></span> Maluti Peak Solutions. All rights reserved.</span>
+        <span>Designed &amp; Built in Lesotho 🇱🇸</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    AOS.init({ once: true, offset: 60, duration: 600 });
+  </script>
+</body>
+</html>

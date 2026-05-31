@@ -1,0 +1,274 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — Maluti Peak Solutions</title>
+  <meta name="description" content="Learn about Maluti Peak Solutions — a student-led digital consultancy in Lesotho built to make professional digital services accessible to everyone." />
+  <meta property="og:title"       content="About Maluti Peak Solutions" />
+  <meta property="og:description" content="Our story, mission, vision, and values." />
+  <meta property="og:type"        content="website" />
+
+  <!-- Bootstrap 5.3 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <!-- AOS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/png" href="images/logo.png" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════ NAVIGATION -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Maluti Peak Solutions home">
+        <img src="images/logo.png" alt="Maluti Peak Solutions logo" class="nav__logo-img" loading="lazy" />
+        <div class="nav__logo-text" style="display:none;">MPS<div class="nav__logo-sub">Maluti Peak Solutions</div></div>
+      </a>
+      <ul class="nav__links" id="navLinks">
+        <li class="nav__item"><a href="index.html"    class="nav__link">Home</a></li>
+        <li class="nav__item"><a href="about.html"    class="nav__link nav__link--active">About</a></li>
+        <li class="nav__item">
+          <a href="services.html" class="nav__link nav__link--has-dropdown" aria-haspopup="true">Services</a>
+          <ul class="nav__dropdown">
+            <li><a href="services/website-design.html"       class="nav__dropdown-link"><i class="bi bi-globe2 me-2"></i>Website Design</a></li>
+            <li><a href="services/blog-creation.html"        class="nav__dropdown-link"><i class="bi bi-pencil-square me-2"></i>Blog Creation</a></li>
+            <li><a href="services/cv-design.html"            class="nav__dropdown-link"><i class="bi bi-file-person me-2"></i>CV Design</a></li>
+            <li><a href="services/statistical-analysis.html" class="nav__dropdown-link"><i class="bi bi-graph-up me-2"></i>Statistical Analysis</a></li>
+          </ul>
+        </li>
+        <li class="nav__item"><a href="blog.html"      class="nav__link">Blog</a></li>
+        <li class="nav__item"><a href="portfolio.html" class="nav__link">Portfolio</a></li>
+        <li class="nav__item"><a href="contact.html"   class="nav__link">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="nav__cta">Get in Touch</a>
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════ PAGE HERO -->
+  <div class="page-hero">
+    <div class="container" data-aos="fade-up">
+      <span class="section__tag" style="background:rgba(245,166,35,0.15);color:var(--gold);">
+        <i class="bi bi-book-open me-1"></i> Our Story
+      </span>
+      <h1 class="text-white mb-3">About Maluti Peak Solutions</h1>
+      <p class="text-light">A student-led consultancy built on the belief that digital opportunity should reach everyone — not just those who can afford to pay premium prices.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════ OUR STORY -->
+  <section class="section">
+    <div class="container">
+      <div class="row g-5 align-items-center why-grid">
+        <div class="col-lg-6" data-aos="fade-right">
+          <span class="section__tag"><i class="bi bi-stars me-1"></i> How We Started</span>
+          <h2>Born from a Simple Observation</h2>
+          <p>We noticed something that many in Lesotho already know: talented people — students finishing degrees, entrepreneurs starting businesses, researchers completing studies — often lack access to the digital tools and professional services they need to move forward.</p>
+          <p>Hiring a web designer abroad is expensive. Getting a CV professionally designed costs money many students don't have. Statistical analysis support for a dissertation can be nearly impossible to find locally at a reasonable rate.</p>
+          <p>Maluti Peak Solutions was created to change that. We're a team of students and young professionals in Information Systems, Computer Science, and Statistics — putting our combined skills to work for our community.</p>
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="why-image">
+            <i class="bi bi-mountains" style="font-size:4rem; color:rgba(255,255,255,0.35);"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ MISSION & VISION -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="0">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+              <i class="bi bi-bullseye" style="font-size:2.5rem; color:var(--blue); display:block; margin-bottom:1.25rem;"></i>
+              <h3 class="card-title fw-700 mb-3">Our Mission</h3>
+              <p class="card-text">To provide accessible, affordable, and professional digital solutions that help students, entrepreneurs, and small businesses improve their online presence, professional image, and academic productivity.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="card border-0 shadow-sm h-100" style="background:var(--navy);">
+            <div class="card-body p-4">
+              <i class="bi bi-rocket-takeoff-fill" style="font-size:2.5rem; color:var(--gold); display:block; margin-bottom:1.25rem;"></i>
+              <h3 class="card-title fw-700 mb-3" style="color:var(--white);">Our Vision</h3>
+              <p class="card-text" style="color:rgba(255,255,255,0.85);">To become a trusted and innovative digital consultancy recognised for empowering individuals and businesses through creative, reliable, and modern digital solutions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ CORE VALUES -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header" data-aos="fade-up">
+        <span class="section__tag"><i class="bi bi-trophy me-1"></i> Core Values</span>
+        <h2>What Guides Our Work</h2>
+        <p>These four principles aren't just words on a wall — they're the standards we hold ourselves to in every project.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+          <div class="value-card card border-0 shadow-sm p-4 h-100 text-center">
+            <i class="bi bi-patch-check-fill value-card__icon"></i>
+            <h4 class="mt-3 fw-700">Professionalism</h4>
+            <p>We treat every project — big or small — with the same level of care and discipline. Deadlines respected. Quality maintained.</p>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+          <div class="value-card card border-0 shadow-sm p-4 h-100 text-center">
+            <i class="bi bi-lightbulb-fill value-card__icon"></i>
+            <h4 class="mt-3 fw-700">Innovation</h4>
+            <p>We stay current with tools, trends, and techniques so that our clients get modern solutions, not outdated ones.</p>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+          <div class="value-card card border-0 shadow-sm p-4 h-100 text-center">
+            <i class="bi bi-unlock-fill value-card__icon"></i>
+            <h4 class="mt-3 fw-700">Accessibility</h4>
+            <p>Affordable pricing, clear communication, and services designed for people who aren't necessarily tech-savvy.</p>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+          <div class="value-card card border-0 shadow-sm p-4 h-100 text-center">
+            <i class="bi bi-shield-check value-card__icon"></i>
+            <h4 class="mt-3 fw-700">Reliability</h4>
+            <p>We do what we say we'll do. If something changes, we communicate — we don't disappear.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ TEAM -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__header" data-aos="fade-up">
+        <span class="section__tag"><i class="bi bi-people me-1"></i> The Team</span>
+        <h2>The People Behind MPS</h2>
+        <p>We're students and young professionals who bring complementary skills together under one roof.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+          <div class="team-card text-center">
+            <div class="team-card__avatar">T</div>
+            <h4>[Team Member Name]</h4>
+            <span class="team-card__role">Founder &amp; Lead Developer</span>
+            <p>Information Systems · Web Development · Project Lead</p>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+          <div class="team-card text-center">
+            <div class="team-card__avatar">M</div>
+            <h4>[Team Member Name]</h4>
+            <span class="team-card__role">Design &amp; Content Lead</span>
+            <p>UI/UX Design · Blog Setup · CV Design</p>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+          <div class="team-card text-center">
+            <div class="team-card__avatar">L</div>
+            <h4>[Team Member Name]</h4>
+            <span class="team-card__role">Data &amp; Analytics</span>
+            <p>Statistics · SPSS · R · Python · Excel</p>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+          <div class="team-card text-center">
+            <div class="team-card__avatar"><i class="bi bi-plus-lg"></i></div>
+            <h4>Join the Team</h4>
+            <span class="team-card__role">Open Position</span>
+            <p>We're growing. Reach out if you'd like to collaborate.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-center mt-4" style="font-size:0.875rem; color:var(--text-muted);">
+        <i class="bi bi-info-circle me-1"></i>
+        <em>Replace the placeholder cards above with your actual team members before going live.</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ CTA BANNER -->
+  <section class="cta-banner" aria-label="Call to action">
+    <div class="container py-5 text-center" data-aos="zoom-in">
+      <h2 class="mb-3"><i class="bi bi-handshake me-2"></i>Ready to Work Together?</h2>
+      <p class="lead mb-4">Whether you need a website, a CV, or help with your research data — we're here and ready to help.</p>
+      <div class="d-flex gap-3 justify-content-center flex-wrap">
+        <a href="contact.html"  class="btn btn--primary btn-lg"><i class="bi bi-envelope-fill me-2"></i>Get in Touch</a>
+        <a href="services.html" class="btn btn--outline btn-lg"><i class="bi bi-grid-fill me-2"></i>Our Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="row g-4 footer__top">
+        <div class="col-lg-4 footer__brand">
+          <img src="images/logo.png" alt="Maluti Peak Solutions" class="footer__logo" loading="lazy" />
+          <p class="mt-3">A student-led digital consultancy providing affordable, modern digital services to students, entrepreneurs, and small businesses in Lesotho.</p>
+          <div class="footer__social mt-3">
+            <a href="#" class="footer__social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="footer__social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="footer__social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="footer__social-link" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <p class="footer__col-title">Services</p>
+          <ul class="footer__links">
+            <li><a href="services/website-design.html"       class="footer__link">Website Design</a></li>
+            <li><a href="services/blog-creation.html"        class="footer__link">Blog Creation</a></li>
+            <li><a href="services/cv-design.html"            class="footer__link">CV Design</a></li>
+            <li><a href="services/statistical-analysis.html" class="footer__link">Statistical Analysis</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <p class="footer__col-title">Company</p>
+          <ul class="footer__links">
+            <li><a href="about.html"     class="footer__link">About Us</a></li>
+            <li><a href="portfolio.html" class="footer__link">Portfolio</a></li>
+            <li><a href="blog.html"      class="footer__link">Blog</a></li>
+            <li><a href="contact.html"   class="footer__link">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 col-lg-4">
+          <p class="footer__col-title">Contact</p>
+          <ul class="footer__links">
+            <li><a href="mailto:info@malutipeak.co.ls" class="footer__link"><i class="bi bi-envelope me-2"></i>info@malutipeak.co.ls</a></li>
+            <li><a href="tel:+26658398399"             class="footer__link"><i class="bi bi-telephone me-2"></i>+266 58 398 399</a></li>
+            <li><span class="footer__link"><i class="bi bi-geo-alt me-2"></i>Maseru, Lesotho</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; <span id="year"></span> Maluti Peak Solutions. All rights reserved.</span>
+        <span>Designed &amp; Built in Lesotho 🇱🇸</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    AOS.init({ once: true, offset: 60, duration: 600 });
+  </script>
+</body>
+</html>

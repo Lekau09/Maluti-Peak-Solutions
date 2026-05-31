@@ -1,0 +1,403 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maluti Peak Solutions — Digital Services for Lesotho</title>
+  <meta name="description" content="Maluti Peak Solutions is a student-led digital consultancy in Lesotho offering website design, blog creation, CV design, and statistical analysis." />
+
+  <!-- OpenGraph -->
+  <meta property="og:title"       content="Maluti Peak Solutions" />
+  <meta property="og:description" content="Professional digital services for students, entrepreneurs, and small businesses in Lesotho." />
+  <meta property="og:type"        content="website" />
+  <meta property="og:image"       content="images/logo.png" />
+
+  <!-- Bootstrap 5.3 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <!-- AOS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/png" href="images/logo.png" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════ NAVIGATION -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Maluti Peak Solutions home">
+        <img src="images/logo.png" alt="Maluti Peak Solutions logo" class="nav__logo-img" loading="lazy" />
+        <div class="nav__logo-text" style="display:none;">
+          MPS
+          <div class="nav__logo-sub">Maluti Peak Solutions</div>
+        </div>
+      </a>
+
+      <ul class="nav__links" id="navLinks">
+        <li class="nav__item"><a href="index.html"    class="nav__link nav__link--active">Home</a></li>
+        <li class="nav__item"><a href="about.html"    class="nav__link">About</a></li>
+        <li class="nav__item">
+          <a href="services.html" class="nav__link nav__link--has-dropdown" aria-haspopup="true">Services</a>
+          <ul class="nav__dropdown" role="list">
+            <li><a href="services/website-design.html"       class="nav__dropdown-link"><i class="bi bi-globe2 me-2"></i>Website Design</a></li>
+            <li><a href="services/blog-creation.html"        class="nav__dropdown-link"><i class="bi bi-pencil-square me-2"></i>Blog Creation</a></li>
+            <li><a href="services/cv-design.html"            class="nav__dropdown-link"><i class="bi bi-file-person me-2"></i>CV Design</a></li>
+            <li><a href="services/statistical-analysis.html" class="nav__dropdown-link"><i class="bi bi-graph-up me-2"></i>Statistical Analysis</a></li>
+          </ul>
+        </li>
+        <li class="nav__item"><a href="blog.html"      class="nav__link">Blog</a></li>
+        <li class="nav__item"><a href="portfolio.html" class="nav__link">Portfolio</a></li>
+        <li class="nav__item"><a href="contact.html"   class="nav__link">Contact</a></li>
+      </ul>
+
+      <a href="contact.html" class="nav__cta">Get in Touch</a>
+      <button class="nav__hamburger" id="hamburger"
+              aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════ HERO -->
+  <section class="hero" aria-label="Hero banner">
+    <div class="hero__overlay"></div>
+    <div class="container hero__container">
+      <div class="hero__content" data-aos="fade-up" data-aos-duration="900">
+        <p class="hero__eyebrow">
+          Information Systems &nbsp;&middot;&nbsp; Computer Science &nbsp;&middot;&nbsp; Statistics
+        </p>
+        <h1 class="hero__title">
+          Professional Digital<br />Services That Work
+        </h1>
+        <p class="hero__subtitle">
+          Websites, CVs, blogs, and data analysis — built with precision for
+          students, entrepreneurs, and businesses that want to make an impact.
+        </p>
+        <div class="hero__actions">
+          <a href="services.html" class="btn btn--gold btn-lg">
+            View Our Services <i class="bi bi-arrow-right ms-2"></i>
+          </a>
+          <a href="contact.html" class="btn btn--ghost btn-lg">
+            Get a Free Quote
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="hero__scroll" aria-hidden="true">
+      <i class="bi bi-chevron-double-down"></i>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ SERVICES -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section__header" data-aos="fade-up">
+        <p class="section__eyebrow">What We Do</p>
+        <h2>Our Services</h2>
+        <p>Focused digital services built around the real needs of students, startups, and small businesses.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-sm-6 col-xl-3" data-aos="fade-up" data-aos-delay="0">
+          <a href="services/website-design.html" class="svc-card">
+            <div class="svc-card__top" style="background:linear-gradient(135deg,#0F172A,#1E293B);">
+              <i class="bi bi-globe2"></i>
+            </div>
+            <div class="svc-card__body">
+              <h3>Website Design</h3>
+              <p>Modern, responsive websites built to represent your brand professionally on every device.</p>
+              <span class="svc-card__link">Learn more <i class="bi bi-arrow-right"></i></span>
+            </div>
+          </a>
+        </div>
+        <div class="col-sm-6 col-xl-3" data-aos="fade-up" data-aos-delay="100">
+          <a href="services/blog-creation.html" class="svc-card">
+            <div class="svc-card__top" style="background:linear-gradient(135deg,#1E293B,#0D9488);">
+              <i class="bi bi-pencil-square"></i>
+            </div>
+            <div class="svc-card__body">
+              <h3>Blog Creation</h3>
+              <p>Clean, well-structured blogs for academics, businesses, and personal brands — ready to publish.</p>
+              <span class="svc-card__link">Learn more <i class="bi bi-arrow-right"></i></span>
+            </div>
+          </a>
+        </div>
+        <div class="col-sm-6 col-xl-3" data-aos="fade-up" data-aos-delay="200">
+          <a href="services/cv-design.html" class="svc-card">
+            <div class="svc-card__top" style="background:linear-gradient(135deg,#0D9488,#14B8A6);">
+              <i class="bi bi-file-person"></i>
+            </div>
+            <div class="svc-card__body">
+              <h3>CV Design</h3>
+              <p>ATS-friendly CVs designed to make recruiters stop and read every line.</p>
+              <span class="svc-card__link">Learn more <i class="bi bi-arrow-right"></i></span>
+            </div>
+          </a>
+        </div>
+        <div class="col-sm-6 col-xl-3" data-aos="fade-up" data-aos-delay="300">
+          <a href="services/statistical-analysis.html" class="svc-card">
+            <div class="svc-card__top" style="background:linear-gradient(135deg,#D97706,#F59E0B);">
+              <i class="bi bi-graph-up-arrow"></i>
+            </div>
+            <div class="svc-card__body">
+              <h3>Statistical Analysis</h3>
+              <p>Rigorous data analysis using SPSS, R, Python, and Excel — results you can cite.</p>
+              <span class="svc-card__link">Learn more <i class="bi bi-arrow-right"></i></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ ABOUT PANEL -->
+  <section class="about-panel">
+    <div class="about-panel__image" aria-hidden="true">
+      <img src="images/hero-bg.jpg" alt="" loading="lazy"
+           onerror="this.style.display='none'" />
+      <div class="about-panel__image-overlay"></div>
+      <div class="about-panel__image-text">
+        <i class="bi bi-mountains"></i>
+        <span>Maseru, Lesotho</span>
+      </div>
+    </div>
+    <div class="about-panel__content" data-aos="fade-left">
+      <p class="section__eyebrow">Our Mission</p>
+      <h2>Empowering People Through Digital Tools</h2>
+      <p>Quality digital services shouldn't be out of reach for students and small businesses. Maluti Peak Solutions was built to close that gap — professional-grade work at prices that make sense in our context.</p>
+      <p>Our name is drawn from the Maluti mountain range: a symbol of strength, endurance, and reaching higher. That spirit guides everything we deliver.</p>
+      <div class="about-panel__stats">
+        <div class="about-stat">
+          <span class="about-stat__num">4</span>
+          <span class="about-stat__label">Services</span>
+        </div>
+        <div class="about-stat">
+          <span class="about-stat__num">3</span>
+          <span class="about-stat__label">Disciplines</span>
+        </div>
+        <div class="about-stat">
+          <span class="about-stat__num">100%</span>
+          <span class="about-stat__label">Local</span>
+        </div>
+      </div>
+      <a href="about.html" class="btn btn--navy mt-4">
+        About MPS <i class="bi bi-arrow-right ms-2"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ WHY CHOOSE US -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header" data-aos="fade-up">
+        <p class="section__eyebrow">Why Choose MPS</p>
+        <h2>Professional Quality, Accessible Price</h2>
+        <p>Technical expertise combined with a genuine understanding of our community's needs.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+          <div class="why-card">
+            <div class="why-card__icon"><i class="bi bi-houses-fill"></i></div>
+            <h4>Community First</h4>
+            <p>We understand the specific challenges faced by students and businesses in Lesotho — no generic solutions.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+          <div class="why-card">
+            <div class="why-card__icon"><i class="bi bi-coin"></i></div>
+            <h4>Fair Pricing</h4>
+            <p>Professional quality at rates designed to be accessible — without cutting corners on the work.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+          <div class="why-card">
+            <div class="why-card__icon"><i class="bi bi-cpu-fill"></i></div>
+            <h4>Multi-Disciplinary</h4>
+            <p>Information Systems, Computer Science, and Statistics — design, development, and data in one place.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+          <div class="why-card">
+            <div class="why-card__icon"><i class="bi bi-chat-heart-fill"></i></div>
+            <h4>Clear Communication</h4>
+            <p>No jargon, no surprises. We keep you in the loop at every stage from brief to final delivery.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ VALUES STRIP -->
+  <section class="values-strip">
+    <div class="container">
+      <div class="row g-0">
+        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="0">
+          <div class="value-strip-item">
+            <i class="bi bi-patch-check-fill"></i>
+            <span>Professionalism</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="80">
+          <div class="value-strip-item">
+            <i class="bi bi-lightbulb-fill"></i>
+            <span>Innovation</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="160">
+          <div class="value-strip-item">
+            <i class="bi bi-unlock-fill"></i>
+            <span>Accessibility</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="240">
+          <div class="value-strip-item">
+            <i class="bi bi-shield-check"></i>
+            <span>Reliability</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ BLOG PREVIEW -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header" data-aos="fade-up">
+        <p class="section__eyebrow">From the Blog</p>
+        <h2>Resources &amp; Insights</h2>
+        <p>Practical guides on digital presence, career development, and academic productivity.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="0">
+          <a href="blog/why-small-businesses-need-a-website.html" class="article-card">
+            <div class="article-card__thumb" style="background:linear-gradient(135deg,#0F172A,#0D9488);">
+              <i class="bi bi-globe2"></i>
+            </div>
+            <div class="article-card__body">
+              <div class="article-card__meta">
+                <span class="article-tag article-tag--blue">Business</span>
+                <small><i class="bi bi-calendar3 me-1"></i>May 2025 &nbsp;&middot;&nbsp; 5 min</small>
+              </div>
+              <h3>Why Every Small Business Needs a Website in 2025</h3>
+              <p>Your customers are searching online. Here's why not having a website is costing you business.</p>
+              <span class="article-card__cta">Read article <i class="bi bi-arrow-right ms-1"></i></span>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <a href="blog/cv-design-tips-for-students.html" class="article-card">
+            <div class="article-card__thumb" style="background:linear-gradient(135deg,#1E293B,#14B8A6);">
+              <i class="bi bi-file-person"></i>
+            </div>
+            <div class="article-card__body">
+              <div class="article-card__meta">
+                <span class="article-tag article-tag--green">Career</span>
+                <small><i class="bi bi-calendar3 me-1"></i>May 2025 &nbsp;&middot;&nbsp; 4 min</small>
+              </div>
+              <h3>7 CV Design Tips That Will Actually Get You Noticed</h3>
+              <p>Most CVs land in the bin within 10 seconds. These tips will help yours stand out.</p>
+              <span class="article-card__cta">Read article <i class="bi bi-arrow-right ms-1"></i></span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="text-center mt-5" data-aos="fade-up">
+        <a href="blog.html" class="btn btn--outline-navy">
+          <i class="bi bi-journal-richtext me-2"></i>View All Posts
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ CTA SECTION -->
+  <section class="cta-section" aria-label="Call to action">
+    <div class="cta-section__bg"></div>
+    <div class="container cta-section__inner" data-aos="fade-up">
+      <div class="cta-section__text">
+        <h2>Ready to Reach Your Peak?</h2>
+        <p>Tell us what you need — we'll build a solution that fits your goals and your budget.</p>
+      </div>
+      <div class="cta-section__actions">
+        <a href="contact.html" class="btn btn--gold btn-lg">
+          <i class="bi bi-envelope-fill me-2"></i>Contact Us Today
+        </a>
+        <a href="services.html" class="btn btn--ghost btn-lg">
+          View All Services
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="row g-4 footer__top">
+
+        <div class="col-lg-4 footer__brand">
+          <img src="images/logo.png" alt="Maluti Peak Solutions" class="footer__logo" loading="lazy" />
+          <p class="mt-3">A student-led digital consultancy providing affordable, professional digital services to students, entrepreneurs, and small businesses in Lesotho.</p>
+          <div class="footer__social mt-3">
+            <a href="#" class="footer__social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="footer__social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="footer__social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="footer__social-link" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-2">
+          <p class="footer__col-title">Services</p>
+          <ul class="footer__links">
+            <li><a href="services/website-design.html"       class="footer__link">Website Design</a></li>
+            <li><a href="services/blog-creation.html"        class="footer__link">Blog Creation</a></li>
+            <li><a href="services/cv-design.html"            class="footer__link">CV Design</a></li>
+            <li><a href="services/statistical-analysis.html" class="footer__link">Statistical Analysis</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-2">
+          <p class="footer__col-title">Company</p>
+          <ul class="footer__links">
+            <li><a href="about.html"     class="footer__link">About Us</a></li>
+            <li><a href="portfolio.html" class="footer__link">Portfolio</a></li>
+            <li><a href="blog.html"      class="footer__link">Blog</a></li>
+            <li><a href="contact.html"   class="footer__link">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-4 col-lg-4">
+          <p class="footer__col-title">Contact</p>
+          <ul class="footer__links">
+            <li><a href="mailto:info@malutipeak.co.ls" class="footer__link"><i class="bi bi-envelope me-2"></i>info@malutipeak.co.ls</a></li>
+            <li><a href="tel:+26658398399"             class="footer__link"><i class="bi bi-telephone me-2"></i>+266 58 398 399</a></li>
+            <li><span class="footer__link"><i class="bi bi-geo-alt me-2"></i>Maseru, Lesotho</span></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <span>&copy; <span id="year"></span> Maluti Peak Solutions. All rights reserved.</span>
+        <span>Designed &amp; Built in Lesotho 🇱🇸</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    AOS.init({ once: true, offset: 60, duration: 700 });
+  </script>
+</body>
+</html>
