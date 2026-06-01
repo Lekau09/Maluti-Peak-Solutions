@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Maluti Peak Solutions — Digital Excellence from Lesotho</title>
   <meta name="description" content="Maluti Peak Solutions: Websites, blogs, CVs & statistical analysis for Lesotho's students and businesses. Local expertise, global quality." />
 
@@ -26,7 +26,7 @@
   <link rel="icon" type="image/png" href="images/logo.png" />
   
   <style>
-    /* ========== NEW COLOR PALETTE (from your reference image) ========== */
+    /* ========== COMPLETE FIXED CSS ========== */
     :root {
       --navy-deep: #0A1A2F;
       --navy-soft: #1E3A5F;
@@ -39,10 +39,18 @@
       --charcoal: #2C2C2C;
     }
 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
       background: var(--cream);
       color: var(--charcoal);
+      overflow-x: hidden;
+      width: 100%;
     }
 
     h1, h2, h3, .hero__title, .section__header h2 {
@@ -50,17 +58,44 @@
       font-weight: 700;
     }
 
-    /* ========== NAVIGATION refined ========== */
+    /* ========== NAVIGATION - FIXED MOBILE ========== */
     .nav {
       background: rgba(10, 26, 47, 0.95);
       backdrop-filter: blur(10px);
       padding: 0.8rem 0;
-      transition: all 0.3s;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      width: 100%;
+    }
+
+    .nav__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      width: 100%;
+      padding: 0 1rem;
+    }
+
+    .nav__logo img {
+      height: 45px;
+      width: auto;
+    }
+
+    .nav__links {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
     }
 
     .nav__link {
-      color: #fff;
+      color: white;
+      text-decoration: none;
       font-weight: 500;
+      transition: color 0.3s;
     }
 
     .nav__link:hover, .nav__link--active {
@@ -73,23 +108,86 @@
       border-radius: 40px;
       padding: 0.5rem 1.5rem;
       font-weight: 600;
+      text-decoration: none;
       transition: all 0.3s;
     }
 
     .nav__cta:hover {
       background: var(--gold-deep);
-      color: #fff;
+      color: white;
       transform: translateY(-2px);
     }
 
-    /* ========== HERO with mountain background ========== */
+    /* Hamburger Menu - FIXED & VISIBLE */
+    .nav__hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      z-index: 1001;
+    }
+
+    .nav__hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: var(--gold-warm);
+      margin: 5px 0;
+      border-radius: 3px;
+      transition: all 0.3s;
+    }
+
+    /* Mobile menu */
+    @media (max-width: 991px) {
+      .nav__hamburger {
+        display: block;
+      }
+
+      .nav__links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--navy-deep);
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1rem;
+        text-align: center;
+        border-radius: 0 0 20px 20px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      }
+
+      .nav__links.show {
+        display: flex;
+      }
+
+      .nav__cta {
+        display: none;
+      }
+
+      .nav__cta--mobile {
+        display: inline-block;
+        margin-top: 0.5rem;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .nav__cta--mobile {
+        display: none;
+      }
+    }
+
+    /* ========== HERO - FIXED RESPONSIVE ========== */
     .hero {
       position: relative;
-      min-height: 85vh;
+      min-height: 80vh;
       background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-soft) 100%);
       display: flex;
       align-items: center;
       overflow: hidden;
+      padding: 2rem 0;
     }
 
     .hero::before {
@@ -101,26 +199,28 @@
       bottom: 0;
       background-image: url('images/maluti-bg.jpg');
       background-size: cover;
-      background-position: center 30%;
-      opacity: 0.25;
+      background-position: center center;
+      opacity: 0.2;
       z-index: 0;
     }
 
     .hero__container {
       position: relative;
       z-index: 2;
+      width: 100%;
+      padding: 0 1rem;
     }
 
     .hero__eyebrow {
       color: var(--gold-warm);
       letter-spacing: 2px;
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       text-transform: uppercase;
       margin-bottom: 1rem;
     }
 
     .hero__title {
-      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-size: clamp(1.8rem, 6vw, 3.5rem);
       color: white;
       line-height: 1.2;
       margin-bottom: 1rem;
@@ -128,34 +228,46 @@
 
     .hero__subtitle {
       color: rgba(255,255,255,0.9);
-      font-size: 1.1rem;
+      font-size: clamp(0.9rem, 4vw, 1.1rem);
       max-width: 600px;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero__actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
 
     .btn--gold {
       background: var(--gold-warm);
       color: var(--navy-deep);
       border-radius: 40px;
-      padding: 0.75rem 2rem;
+      padding: 0.7rem 1.5rem;
       font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
       transition: all 0.3s;
+      border: none;
+      cursor: pointer;
     }
 
     .btn--gold:hover {
       background: var(--gold-deep);
       color: white;
       transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
 
     .btn--ghost {
       border: 2px solid var(--gold-warm);
       color: var(--gold-warm);
       border-radius: 40px;
-      padding: 0.75rem 2rem;
+      padding: 0.7rem 1.5rem;
       font-weight: 600;
       background: transparent;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s;
     }
 
     .btn--ghost:hover {
@@ -164,17 +276,16 @@
       transform: translateY(-3px);
     }
 
-    /* ========== WHY CHOOSE US - Mountain inspired ========== */
+    /* ========== WHY CHOOSE US ========== */
     .why-section {
-      position: relative;
-      padding: 5rem 0;
+      padding: 3rem 1rem;
       background: var(--cream);
     }
 
     .why-card-custom {
       background: white;
       border-radius: 20px;
-      padding: 1.8rem;
+      padding: 1.5rem;
       transition: all 0.3s;
       box-shadow: 0 5px 20px rgba(0,0,0,0.05);
       height: 100%;
@@ -182,8 +293,8 @@
     }
 
     .why-card-custom:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
     }
 
     .why-icon {
@@ -194,7 +305,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
     }
 
     .why-icon i {
@@ -208,15 +319,15 @@
       border-radius: 20px;
       overflow: hidden;
       transition: all 0.3s;
-      display: block;
       text-decoration: none;
       color: inherit;
       height: 100%;
+      display: block;
       box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     }
 
     .svc-card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-5px);
       box-shadow: 0 20px 35px rgba(0,0,0,0.1);
     }
 
@@ -226,27 +337,27 @@
     }
 
     .svc-card__top i {
-      font-size: 3rem;
+      font-size: 2.5rem;
       color: white;
     }
 
     .svc-card__body {
-      padding: 1.5rem;
+      padding: 1.2rem;
     }
 
     .svc-card__body h3 {
-      font-size: 1.3rem;
-      margin-bottom: 0.75rem;
-      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
     }
 
     .svc-card__link {
       color: var(--gold-deep);
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
+      text-decoration: none;
     }
 
-    /* ========== ABOUT PANEL with overlay ========== */
+    /* ========== ABOUT PANEL - FIXED IMAGE ========== */
     .about-panel {
       display: flex;
       flex-wrap: wrap;
@@ -265,29 +376,34 @@
       bottom: 0;
       background-image: url('images/maluti-bg.jpg');
       background-size: cover;
+      background-position: center;
       opacity: 0.1;
-      pointer-events: none;
     }
 
     .about-panel__content {
       flex: 1;
-      padding: 4rem;
+      padding: 2rem;
       position: relative;
       z-index: 2;
     }
 
     .about-panel__image {
       flex: 1;
-      min-height: 400px;
+      min-height: 300px;
       position: relative;
       background-image: url('images/maluti-bg.jpg');
       background-size: cover;
       background-position: center;
+      background-repeat: no-repeat;
     }
 
     @media (max-width: 768px) {
-      .about-panel__content { padding: 2rem; }
-      .about-panel__image { min-height: 250px; }
+      .about-panel__content {
+        padding: 2rem 1.5rem;
+      }
+      .about-panel__image {
+        min-height: 200px;
+      }
     }
 
     .about-stat__num {
@@ -299,17 +415,18 @@
     /* ========== VALUES STRIP ========== */
     .values-strip {
       background: var(--navy-soft);
-      padding: 2rem 0;
+      padding: 1.5rem 0;
       color: white;
     }
 
     .value-strip-item {
       text-align: center;
-      padding: 1rem;
+      padding: 0.5rem;
+      font-size: 0.9rem;
     }
 
     .value-strip-item i {
-      font-size: 2rem;
+      font-size: 1.5rem;
       color: var(--gold-warm);
       margin-right: 0.5rem;
     }
@@ -334,36 +451,24 @@
     }
 
     .article-card__thumb {
-      padding: 2rem;
+      padding: 1.5rem;
       text-align: center;
     }
 
     .article-card__thumb i {
-      font-size: 3rem;
+      font-size: 2.5rem;
       color: white;
     }
 
     .article-card__body {
-      padding: 1.5rem;
+      padding: 1.2rem;
     }
-
-    .article-tag {
-      display: inline-block;
-      padding: 0.25rem 0.75rem;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-    }
-
-    .article-tag--blue { background: #E0F2FE; color: #0369A1; }
-    .article-tag--green { background: #D1FAE5; color: #065F46; }
 
     /* ========== CTA SECTION ========== */
     .cta-section {
       position: relative;
       background: linear-gradient(135deg, var(--navy-deep), var(--teal-mountain));
-      padding: 4rem 0;
+      padding: 3rem 1rem;
       text-align: center;
       color: white;
     }
@@ -377,7 +482,7 @@
       bottom: 0;
       background-image: url('images/maluti-bg.jpg');
       background-size: cover;
-      opacity: 0.15;
+      opacity: 0.1;
     }
 
     .cta-section__inner {
@@ -389,11 +494,11 @@
     .footer {
       background: var(--navy-deep);
       color: #ccc;
-      padding: 3rem 0 1.5rem;
+      padding: 2rem 0 1rem;
     }
 
     .footer__logo {
-      max-height: 50px;
+      max-height: 45px;
       filter: brightness(0) invert(1);
     }
 
@@ -424,6 +529,7 @@
       justify-content: center;
       margin-right: 0.5rem;
       transition: all 0.3s;
+      text-decoration: none;
     }
 
     .footer__social-link:hover {
@@ -436,40 +542,74 @@
       color: var(--gold-deep);
       font-weight: 600;
       letter-spacing: 2px;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       text-transform: uppercase;
     }
 
     .section__header h2 {
-      font-size: 2.2rem;
+      font-size: clamp(1.5rem, 5vw, 2.2rem);
       margin-bottom: 1rem;
+    }
+
+    /* Container padding fix */
+    .container {
+      width: 100%;
+      padding-right: 1rem;
+      padding-left: 1rem;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    @media (min-width: 1200px) {
+      .container {
+        max-width: 1140px;
+      }
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Fix row margins */
+    .row {
+      margin-right: 0;
+      margin-left: 0;
+    }
+
+    .g-4 {
+      --bs-gutter-x: 1.5rem;
+      --bs-gutter-y: 1.5rem;
     }
   </style>
 </head>
 <body>
 
-  <!-- NAVIGATION -->
-  <nav class="nav" role="navigation">
-    <div class="container nav__inner d-flex justify-content-between align-items-center">
+  <!-- NAVIGATION - FIXED HAMBURGER -->
+  <nav class="nav">
+    <div class="container nav__inner">
       <a href="index.html" class="nav__logo">
-        <img src="images/logo.png" alt="Maluti Peak Solutions logo" style="height: 45px;" />
+        <img src="images/logo.png" alt="Maluti Peak Solutions logo" />
       </a>
 
-      <ul class="nav__links d-none d-lg-flex list-unstyled mb-0 gap-4" id="navLinks">
+      <ul class="nav__links" id="navLinks">
         <li><a href="index.html" class="nav__link nav__link--active">Home</a></li>
         <li><a href="about.html" class="nav__link">About</a></li>
         <li><a href="services.html" class="nav__link">Services</a></li>
         <li><a href="blog.html" class="nav__link">Blog</a></li>
         <li><a href="portfolio.html" class="nav__link">Portfolio</a></li>
         <li><a href="contact.html" class="nav__link">Contact</a></li>
+        <li class="d-lg-none"><a href="contact.html" class="nav__cta nav__cta--mobile">Get in Touch</a></li>
       </ul>
 
       <a href="contact.html" class="nav__cta d-none d-lg-inline-block">Get in Touch</a>
-      <button class="nav__hamburger d-lg-none btn" id="hamburger">☰</button>
+      <button class="nav__hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
-  <!-- HERO with mountain backdrop -->
+  <!-- HERO -->
   <section class="hero">
     <div class="container hero__container">
       <div class="hero__content" data-aos="fade-up">
@@ -480,20 +620,20 @@
           <strong>Affordable, local, and actually reliable.</strong>
         </p>
         <div class="hero__actions">
-          <a href="services.html" class="btn btn--gold me-3">View Our Services <i class="bi bi-arrow-right ms-2"></i></a>
-          <a href="contact.html" class="btn btn--ghost">Get a Free Quote</a>
+          <a href="services.html" class="btn--gold">View Our Services <i class="bi bi-arrow-right ms-2"></i></a>
+          <a href="contact.html" class="btn--ghost">Get a Free Quote</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- WHY CHOOSE US - Mountain inspired design -->
+  <!-- WHY CHOOSE US -->
   <section class="why-section">
     <div class="container">
-      <div class="text-center mb-5" data-aos="fade-up">
-        <p class="section__eyebrow">Why Choose Maluti Peak Solutions?</p>
-        <h2 style="font-size: 2.2rem;">We're local, affordable & actually deliver on Time</h2>
-        <p class="lead mx-auto" style="max-width: 700px;">Most consultancies in Lesotho are either too expensive or don't understand Basotho and small businesses. <strong>We do.</strong></p>
+      <div class="text-center mb-4" data-aos="fade-up">
+        <p class="section__eyebrow">Why Maluti Peak Solutions?</p>
+        <h2 style="font-size: clamp(1.5rem, 5vw, 2rem);">We're local, affordable & actually deliver</h2>
+        <p>Most consultancies in Lesotho are either too expensive or don't understand students and small businesses. <strong>We do.</strong></p>
       </div>
 
       <div class="row g-4">
@@ -515,36 +655,36 @@
           <div class="why-card-custom">
             <div class="why-icon"><i class="bi bi-bar-chart-steps"></i></div>
             <h4>3 skills in 1 team</h4>
-            <p>Computer Science + Information Systems + stats – no need to hire three different people.</p>
+            <p>Web + design + stats – no need to hire three different people.</p>
           </div>
         </div>
         <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
           <div class="why-card-custom">
             <div class="why-icon"><i class="bi bi-chat-dots-fill"></i></div>
-            <h4> Our Customers = Our TOP Priority</h4>
+            <h4>You'll talk to a human, not a bot</h4>
             <p>Clear, fast replies – from first message to final delivery.</p>
           </div>
         </div>
       </div>
 
-      <div class="text-center mt-5" data-aos="fade-up">
-        <a href="contact.html" class="btn btn--gold btn-lg">Let's work together <i class="bi bi-arrow-right ms-2"></i></a>
+      <div class="text-center mt-4" data-aos="fade-up">
+        <a href="contact.html" class="btn--gold">Let's work together <i class="bi bi-arrow-right ms-2"></i></a>
         <span class="ms-3 text-muted">or <a href="services.html" style="color: var(--gold-deep);">see what we build</a></span>
       </div>
     </div>
   </section>
 
   <!-- SERVICES SECTION -->
-  <section class="section py-5">
+  <section class="py-4">
     <div class="container">
-      <div class="section__header text-center mb-5" data-aos="fade-up">
+      <div class="section__header text-center mb-4" data-aos="fade-up">
         <p class="section__eyebrow">What We Do</p>
         <h2>Our Services</h2>
-        <p>Focused digital services built around the real needs of students, startups, and small businesses.</p>
+        <p>Four focused services designed around the real needs of students, entrepreneurs, and small businesses.</p>
       </div>
 
       <div class="row g-4">
-        <div class="col-sm-6 col-xl-3" data-aos="fade-up">
+        <div class="col-sm-6 col-lg-3" data-aos="fade-up">
           <a href="services/website-design.html" class="svc-card">
             <div class="svc-card__top" style="background:linear-gradient(135deg, #1E3A5F, #2D6A4F);">
               <i class="bi bi-globe2"></i>
@@ -556,7 +696,7 @@
             </div>
           </a>
         </div>
-        <div class="col-sm-6 col-xl-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
           <a href="services/blog-creation.html" class="svc-card">
             <div class="svc-card__top" style="background:linear-gradient(135deg, #2D6A4F, #C9A03D);">
               <i class="bi bi-pencil-square"></i>
@@ -568,7 +708,7 @@
             </div>
           </a>
         </div>
-        <div class="col-sm-6 col-xl-3" data-aos="fade-up" data-aos-delay="200">
+        <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
           <a href="services/cv-design.html" class="svc-card">
             <div class="svc-card__top" style="background:linear-gradient(135deg, #C9A03D, #C15C3E);">
               <i class="bi bi-file-person"></i>
@@ -580,7 +720,7 @@
             </div>
           </a>
         </div>
-        <div class="col-sm-6 col-xl-3" data-aos="fade-up" data-aos-delay="300">
+        <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
           <a href="services/statistical-analysis.html" class="svc-card">
             <div class="svc-card__top" style="background:linear-gradient(135deg, #C15C3E, #1E3A5F);">
               <i class="bi bi-graph-up-arrow"></i>
@@ -596,19 +736,19 @@
     </div>
   </section>
 
-  <!-- ABOUT PANEL with mountain background -->
-  <section class="about-panel">
+  <!-- ABOUT PANEL -->
+  <section class="about-panel my-4">
     <div class="about-panel__content" data-aos="fade-right">
-      <p class="section__eyebrow" style="color: var(--gold-warm);">Our Mission</p>
-      <h2 style="font-size: 2rem;">Empowering People Through Digital Tools</h2>
-      <p>Quality digital services shouldn't be out of reach. Maluti Peak Solutions closes that gap — professional-grade work at prices that make sense in our context.</p>
-      <p>Our name is drawn from the Maluti mountain range: a symbol of strength, endurance, and reaching higher.</p>
-      <div class="about-panel__stats d-flex gap-5 my-4">
+      <p class="section__eyebrow" style="color: var(--gold-warm);">Our Story</p>
+      <h2 style="font-size: clamp(1.5rem, 5vw, 2rem);">About Maluti Peak Solutions</h2>
+      <p>A student-led consultancy built on the belief that digital opportunity should reach everyone — not just those who can afford premium prices.</p>
+      <p><strong>Maluti Peak Solutions was created to change that.</strong> We're a team of students and young professionals in Information Systems, Computer Science, and Statistics — putting our combined skills to work for our community.</p>
+      <div class="about-panel__stats d-flex gap-4 my-3 flex-wrap">
         <div><span class="about-stat__num">4</span><br />Services</div>
         <div><span class="about-stat__num">3</span><br />Disciplines</div>
         <div><span class="about-stat__num">100%</span><br />Local</div>
       </div>
-      <a href="about.html" class="btn btn--gold">About MPS <i class="bi bi-arrow-right ms-2"></i></a>
+      <a href="about.html" class="btn--gold d-inline-block">About MPS <i class="bi bi-arrow-right ms-2"></i></a>
     </div>
     <div class="about-panel__image" aria-hidden="true"></div>
   </section>
@@ -626,9 +766,9 @@
   </section>
 
   <!-- BLOG PREVIEW -->
-  <section class="section py-5">
+  <section class="py-4">
     <div class="container">
-      <div class="section__header text-center mb-5" data-aos="fade-up">
+      <div class="section__header text-center mb-4" data-aos="fade-up">
         <p class="section__eyebrow">From the Blog</p>
         <h2>Resources & Insights</h2>
         <p>Practical guides on digital presence, career development, and academic productivity.</p>
@@ -639,9 +779,9 @@
           <a href="blog/why-small-businesses-need-a-website.html" class="article-card">
             <div class="article-card__thumb" style="background:linear-gradient(135deg, #1E3A5F, #2D6A4F);"><i class="bi bi-globe2"></i></div>
             <div class="article-card__body">
-              <div><span class="article-tag article-tag--blue">Business</span> <small><i class="bi bi-calendar3 me-1"></i>May 2025 · 5 min</small></div>
-              <h3 class="mt-2">Why Every Small Business Needs a Website in 2025</h3>
-              <span class="article-card__cta text-primary">Read article <i class="bi bi-arrow-right ms-1"></i></span>
+              <div><span class="article-tag" style="background:#E0F2FE; color:#0369A1; display:inline-block; padding:0.2rem 0.7rem; border-radius:20px; font-size:0.7rem;">Business</span> <small><i class="bi bi-calendar3 me-1"></i>May 2025</small></div>
+              <h3 class="mt-2" style="font-size:1.1rem;">Why Every Small Business Needs a Website in 2025</h3>
+              <span style="color: var(--gold-deep); font-weight:600;">Read article <i class="bi bi-arrow-right ms-1"></i></span>
             </div>
           </a>
         </div>
@@ -649,16 +789,16 @@
           <a href="blog/cv-design-tips-for-students.html" class="article-card">
             <div class="article-card__thumb" style="background:linear-gradient(135deg, #C9A03D, #C15C3E);"><i class="bi bi-file-person"></i></div>
             <div class="article-card__body">
-              <div><span class="article-tag article-tag--green">Career</span> <small><i class="bi bi-calendar3 me-1"></i>May 2025 · 4 min</small></div>
-              <h3 class="mt-2">7 CV Design Tips That Will Actually Get You Noticed</h3>
-              <span class="article-card__cta text-primary">Read article <i class="bi bi-arrow-right ms-1"></i></span>
+              <div><span class="article-tag" style="background:#D1FAE5; color:#065F46; display:inline-block; padding:0.2rem 0.7rem; border-radius:20px; font-size:0.7rem;">Career</span> <small><i class="bi bi-calendar3 me-1"></i>May 2025</small></div>
+              <h3 class="mt-2" style="font-size:1.1rem;">7 CV Design Tips That Will Actually Get You Noticed</h3>
+              <span style="color: var(--gold-deep); font-weight:600;">Read article <i class="bi bi-arrow-right ms-1"></i></span>
             </div>
           </a>
         </div>
       </div>
 
-      <div class="text-center mt-5" data-aos="fade-up">
-        <a href="blog.html" class="btn btn--outline-navy" style="border:2px solid var(--navy-soft); border-radius:40px; padding:0.6rem 2rem;">View All Posts</a>
+      <div class="text-center mt-4" data-aos="fade-up">
+        <a href="blog.html" style="border:2px solid var(--navy-soft); border-radius:40px; padding:0.6rem 2rem; text-decoration:none; display:inline-block;">View All Posts</a>
       </div>
     </div>
   </section>
@@ -666,9 +806,9 @@
   <!-- CTA SECTION -->
   <section class="cta-section">
     <div class="container cta-section__inner" data-aos="fade-up">
-      <h2 style="font-size: 2rem;">Ready to Reach Your Peak?</h2>
-      <p class="mb-4">Tell us what you need — we'll build a solution that fits your goals and budget.</p>
-      <a href="contact.html" class="btn btn--gold btn-lg"><i class="bi bi-envelope-fill me-2"></i>Contact Us Today</a>
+      <h2 style="font-size: clamp(1.5rem, 5vw, 2rem);">Ready to Reach Your Peak?</h2>
+      <p class="mb-3">Tell us what you need — we'll build a solution that fits your goals and budget.</p>
+      <a href="contact.html" class="btn--gold d-inline-block"><i class="bi bi-envelope-fill me-2"></i>Contact Us Today</a>
     </div>
   </section>
 
@@ -677,7 +817,7 @@
     <div class="container">
       <div class="row g-4">
         <div class="col-lg-4">
-          <img src="images/logo.png" alt="Maluti Peak Solutions" class="footer__logo mb-3" style="height: 45px;" />
+          <img src="images/logo.png" alt="Maluti Peak Solutions" class="footer__logo mb-3" />
           <p>A student-led digital consultancy providing affordable, professional digital services to students, entrepreneurs, and small businesses in Lesotho.</p>
           <div class="footer__social mt-3">
             <a href="#" class="footer__social-link"><i class="bi bi-facebook"></i></a>
@@ -713,7 +853,7 @@
           </ul>
         </div>
       </div>
-      <div class="footer__bottom text-center mt-5 pt-3 border-top border-secondary">
+      <div class="text-center mt-4 pt-3 border-top border-secondary">
         <span>&copy; <span id="year"></span> Maluti Peak Solutions. All rights reserved.</span>
         <span class="ms-3">Designed & Built in Lesotho 🇱🇸</span>
       </div>
@@ -724,23 +864,24 @@
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    AOS.init({ once: true, offset: 60, duration: 700 });
+    AOS.init({ once: true, offset: 60, duration: 600 });
     
-    // Mobile menu toggle (simple)
+    // Fixed hamburger menu toggle
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
+    
     if (hamburger && navLinks) {
-      hamburger.addEventListener('click', () => {
+      hamburger.addEventListener('click', function() {
         navLinks.classList.toggle('show');
+      });
+      
+      // Close menu when clicking a link
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('show');
+        });
       });
     }
   </script>
-  <style>
-    @media (max-width: 991px) {
-      .nav__links { display: none; flex-direction: column; background: var(--navy-deep); padding: 1rem; border-radius: 12px; margin-top: 1rem; }
-      .nav__links.show { display: flex; }
-      .nav__inner { flex-wrap: wrap; }
-    }
-  </style>
 </body>
 </html>

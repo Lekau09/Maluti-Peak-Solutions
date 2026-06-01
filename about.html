@@ -2,54 +2,142 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>About Us — Maluti Peak Solutions</title>
-  <meta name="description" content="Meet the team behind Maluti Peak Solutions — a student-led digital consultancy in Lesotho built to make professional digital services accessible to everyone." />
-  <meta property="og:title"       content="About Maluti Peak Solutions" />
-  <meta property="og:description" content="Our story, mission, vision, values, and the passionate team making it happen." />
-  <meta property="og:type"        content="website" />
+  <meta name="description" content="Meet the team behind Maluti Peak Solutions — a student-led digital consultancy in Lesotho." />
 
-  <!-- Bootstrap 5.3 -->
+  <!-- Bootstrap & Fonts -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
-  <!-- AOS -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="images/logo.png" />
   
   <style>
-    /* Additional styles to match homepage design */
     :root {
       --navy-deep: #0A1A2F;
       --navy-soft: #1E3A5F;
       --gold-warm: #C9A03D;
       --gold-deep: #B8860B;
       --teal-mountain: #2D6A4F;
-      --terracotta: #C15C3E;
       --cream: #FDFBF7;
       --stone: #ECE6E0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
       font-family: 'Inter', sans-serif;
       background: var(--cream);
+      overflow-x: hidden;
     }
 
-    h1, h2, h3, .page-hero h1 {
+    h1, h2, h3 {
       font-family: 'Playfair Display', serif;
       font-weight: 700;
     }
 
+    /* Navigation */
+    .nav {
+      background: rgba(10, 26, 47, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 0.8rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 0 1rem;
+    }
+
+    .nav__logo img {
+      height: 45px;
+      width: auto;
+    }
+
+    .nav__links {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav__link {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .nav__link:hover, .nav__link--active {
+      color: var(--gold-warm);
+    }
+
+    .nav__cta {
+      background: var(--gold-warm);
+      color: var(--navy-deep);
+      border-radius: 40px;
+      padding: 0.5rem 1.5rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .nav__hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .nav__hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: var(--gold-warm);
+      margin: 5px 0;
+      border-radius: 3px;
+    }
+
+    @media (max-width: 991px) {
+      .nav__hamburger {
+        display: block;
+      }
+      .nav__links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--navy-deep);
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1rem;
+        text-align: center;
+      }
+      .nav__links.show {
+        display: flex;
+      }
+      .nav__cta {
+        display: none;
+      }
+    }
+
+    /* Page Hero */
     .page-hero {
-      background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-soft) 100%);
-      padding: 5rem 0 4rem;
+      background: linear-gradient(135deg, var(--navy-deep), var(--navy-soft));
+      padding: 3rem 1rem;
+      text-align: center;
       position: relative;
-      overflow: hidden;
     }
 
     .page-hero::before {
@@ -61,9 +149,7 @@
       bottom: 0;
       background-image: url('images/maluti-bg.jpg');
       background-size: cover;
-      background-position: center;
       opacity: 0.15;
-      pointer-events: none;
     }
 
     .section__tag {
@@ -72,12 +158,12 @@
       color: var(--gold-warm);
       padding: 0.25rem 1rem;
       border-radius: 30px;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: 600;
-      letter-spacing: 1px;
       margin-bottom: 1rem;
     }
 
+    /* Team Cards */
     .team-card {
       background: white;
       border-radius: 20px;
@@ -89,131 +175,73 @@
     }
 
     .team-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
     }
 
     .team-card__photo {
-      width: 150px;
-      height: 150px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 1rem;
-      border: 4px solid var(--gold-warm);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border: 3px solid var(--gold-warm);
     }
 
     .team-card__role {
       display: inline-block;
       background: linear-gradient(135deg, var(--navy-deep), var(--teal-mountain));
       color: var(--gold-warm);
-      padding: 0.25rem 1rem;
+      padding: 0.2rem 0.8rem;
       border-radius: 30px;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 600;
       margin: 0.5rem 0;
     }
 
-    .value-card {
-      transition: all 0.3s;
-      border-radius: 16px;
-    }
-
-    .value-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .value-card__icon {
-      font-size: 2.5rem;
-      color: var(--gold-warm);
-    }
-
-    .cta-banner {
-      background: linear-gradient(135deg, var(--navy-deep), var(--teal-mountain));
-      color: white;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-banner::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-image: url('images/maluti-bg.jpg');
-      background-size: cover;
-      opacity: 0.1;
-    }
-
-    .btn--primary {
+    .btn--gold {
       background: var(--gold-warm);
       color: var(--navy-deep);
       border-radius: 40px;
-      padding: 0.75rem 2rem;
+      padding: 0.7rem 1.5rem;
       font-weight: 600;
-      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
     }
 
-    .btn--primary:hover {
-      background: var(--gold-deep);
-      color: white;
-      transform: translateY(-3px);
-    }
-
-    .btn--outline {
-      border: 2px solid var(--gold-warm);
-      color: var(--gold-warm);
-      border-radius: 40px;
-      padding: 0.75rem 2rem;
-      font-weight: 600;
-      background: transparent;
-      transition: all 0.3s;
-    }
-
-    .btn--outline:hover {
-      background: var(--gold-warm);
-      color: var(--navy-deep);
-      transform: translateY(-3px);
-    }
-
-    .why-image {
-      background: linear-gradient(135deg, var(--navy-soft), var(--teal-mountain));
-      border-radius: 24px;
-      height: 100%;
-      min-height: 300px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .why-image::before {
-      content: '';
-      position: absolute;
+    .container {
       width: 100%;
-      height: 140%;
-      background-image: url('images/logo.png');
-      background-size: cover;
-      opacity: 0.3;
+      padding-right: 1rem;
+      padding-left: 1rem;
+      margin-right: auto;
+      margin-left: auto;
     }
 
-    .section--alt {
-      background: var(--stone);
+    @media (min-width: 1200px) {
+      .container {
+        max-width: 1140px;
+      }
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .row {
+      margin-right: 0;
+      margin-left: 0;
     }
   </style>
 </head>
 <body>
 
-  <!-- ══════════════════════════════════════════ NAVIGATION -->
-  <nav class="nav" role="navigation" aria-label="Main navigation">
-    <div class="container nav__inner d-flex justify-content-between align-items-center">
+  <nav class="nav">
+    <div class="container nav__inner">
       <a href="index.html" class="nav__logo">
-        <img src="images/logo.png" alt="Maluti Peak Solutions logo" style="height: 45px;" />
+        <img src="images/logo.png" alt="Maluti Peak Solutions logo" />
       </a>
-      <ul class="nav__links d-none d-lg-flex list-unstyled mb-0 gap-4" id="navLinks">
+      <ul class="nav__links" id="navLinks">
         <li><a href="index.html" class="nav__link">Home</a></li>
         <li><a href="about.html" class="nav__link nav__link--active">About</a></li>
         <li><a href="services.html" class="nav__link">Services</a></li>
@@ -221,281 +249,134 @@
         <li><a href="portfolio.html" class="nav__link">Portfolio</a></li>
         <li><a href="contact.html" class="nav__link">Contact</a></li>
       </ul>
-      <a href="contact.html" class="nav__cta d-none d-lg-inline-block">Get in Touch</a>
-      <button class="nav__hamburger d-lg-none btn" id="hamburger">☰</button>
+      <a href="contact.html" class="nav__cta">Get in Touch</a>
+      <button class="nav__hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
-  <!-- ══════════════════════════════════════════ PAGE HERO -->
   <div class="page-hero">
     <div class="container" data-aos="fade-up">
-      <span class="section__tag">
-        <i class="bi bi-book-open me-1"></i> Our Story
-      </span>
-      <h1 class="text-white mb-3" style="font-size: 3rem;">About Maluti Peak Solutions</h1>
-      <p class="text-light lead" style="max-width: 700px;">A student-led consultancy built on the belief that digital opportunity should reach everyone — not just those who can afford premium prices.</p>
+      <span class="section__tag"><i class="bi bi-book-open me-1"></i> Our Story</span>
+      <h1 class="text-white" style="font-size: clamp(1.8rem, 6vw, 3rem);">About Maluti Peak Solutions</h1>
+      <p class="text-white-50">A student-led consultancy built on the belief that digital opportunity should reach everyone.</p>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════════ OUR STORY -->
-  <section class="section py-5">
+  <section class="py-4">
     <div class="container">
-      <div class="row g-5 align-items-center">
+      <div class="row g-4 align-items-center">
         <div class="col-lg-6" data-aos="fade-right">
           <span class="section__tag"><i class="bi bi-stars me-1"></i> How We Started</span>
-          <h2 style="font-size: 2rem;">Our simple observation</h2>
-          <p class="lead" style="color: #334155;">We noticed something that many in Lesotho already know: talented people — students finishing degrees, entrepreneurs starting businesses, researchers completing studies — often lack access to the digital tools and professional services they need to move forward.</p>
-          <p>Hiring a web designer abroad is expensive. Getting a CV professionally designed costs money many students don't have. Statistical analysis support for a dissertation can be nearly impossible to find locally at a reasonable rate.</p>
+          <h2 style="font-size: clamp(1.3rem, 5vw, 2rem);">Our simple observation</h2>
+          <p>We noticed something that many in Lesotho already know: talented people often lack access to the digital tools they need to move forward.</p>
           <p><strong>Maluti Peak Solutions was created to change that.</strong> We're a team of students and young professionals in Information Systems, Computer Science, and Statistics — putting our combined skills to work for our community.</p>
         </div>
         <div class="col-lg-6" data-aos="fade-left">
-          <div class="why-image">
-            <i class="bi bi-mountains" style="font-size: 5rem; color: rgba(255,255,255,0.4); position: relative; z-index: 1;"></i>
+          <div style="background: linear-gradient(135deg, var(--navy-soft), var(--teal-mountain)); border-radius: 20px; padding: 2rem; text-align: center; min-height: 250px; display: flex; align-items: center; justify-content: center;">
+            <i class="bi bi-mountains" style="font-size: 4rem; color: rgba(255,255,255,0.3);"></i>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════ MISSION & VISION -->
-  <section class="section section--alt py-5">
+  <section class="py-4" style="background: var(--stone);">
     <div class="container">
-      <div class="row g-4">
-        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="0">
-          <div class="card border-0 shadow-sm h-100" style="border-radius: 20px;">
-            <div class="card-body p-4">
-              <i class="bi bi-bullseye" style="font-size: 2.5rem; color: var(--gold-warm); display: block; margin-bottom: 1.25rem;"></i>
-              <h3 class="fw-700 mb-3">Our Mission</h3>
-              <p class="card-text">To provide accessible, affordable, and professional digital solutions that help students, entrepreneurs, and small businesses improve their online presence, professional image, and academic productivity.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-          <div class="card border-0 shadow-sm h-100" style="background: var(--navy-deep); border-radius: 20px;">
-            <div class="card-body p-4">
-              <i class="bi bi-rocket-takeoff-fill" style="font-size: 2.5rem; color: var(--gold-warm); display: block; margin-bottom: 1.25rem;"></i>
-              <h3 class="fw-700 mb-3" style="color: white;">Our Vision</h3>
-              <p style="color: rgba(255,255,255,0.85);">To become a trusted and innovative digital consultancy recognised for empowering individuals and businesses through creative, reliable, and modern digital solutions.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════ CORE VALUES -->
-  <section class="section py-5">
-    <div class="container">
-      <div class="section__header text-center mb-5" data-aos="fade-up">
-        <span class="section__tag"><i class="bi bi-trophy me-1"></i> Core Values</span>
-        <h2 style="font-size: 2rem;">What Guides Our Work</h2>
-        <p>These four principles aren't just words on a wall — they're the standards we hold ourselves to in every project.</p>
-      </div>
-      <div class="row g-4">
-        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
-          <div class="value-card card border-0 shadow-sm p-4 h-100 text-center" style="border-radius: 16px;">
-            <i class="bi bi-patch-check-fill value-card__icon"></i>
-            <h4 class="mt-3 fw-700">Professionalism</h4>
-            <p>Every project — big or small — gets the same care. Deadlines respected. Quality maintained.</p>
-          </div>
-        </div>
-        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-          <div class="value-card card border-0 shadow-sm p-4 h-100 text-center" style="border-radius: 16px;">
-            <i class="bi bi-lightbulb-fill value-card__icon"></i>
-            <h4 class="mt-3 fw-700">Innovation</h4>
-            <p>We stay current with tools and trends so clients get modern solutions, not outdated ones.</p>
-          </div>
-        </div>
-        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-          <div class="value-card card border-0 shadow-sm p-4 h-100 text-center" style="border-radius: 16px;">
-            <i class="bi bi-unlock-fill value-card__icon"></i>
-            <h4 class="mt-3 fw-700">Accessibility</h4>
-            <p>Affordable pricing, clear communication, and services for people who aren't tech-savvy.</p>
-          </div>
-        </div>
-        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-          <div class="value-card card border-0 shadow-sm p-4 h-100 text-center" style="border-radius: 16px;">
-            <i class="bi bi-shield-check value-card__icon"></i>
-            <h4 class="mt-3 fw-700">Reliability</h4>
-            <p>We do what we say. If something changes, we communicate — we don't disappear.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════ TEAM SECTION — UPDATED WITH 5 MEMBERS -->
-  <section class="section section--alt py-5">
-    <div class="container">
-      <div class="section__header text-center mb-5" data-aos="fade-up">
+      <div class="section__header text-center mb-4" data-aos="fade-up">
         <span class="section__tag"><i class="bi bi-people me-1"></i> Meet the Team</span>
-        <h2 style="font-size: 2rem;">The People Behind MPS</h2>
-        <p>We're students and young professionals who bring complementary skills together under one roof.</p>
+        <h2 style="font-size: clamp(1.5rem, 5vw, 2rem);">The People Behind MPS</h2>
+        <p>We're students and young professionals bringing complementary skills together.</p>
       </div>
 
       <div class="row g-4">
-        <!-- Team Member 1: Puseletso Rakhoabe - Coordinator & Director -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="col-md-6 col-lg-4" data-aos="fade-up">
           <div class="team-card">
-            <img src="images/team/puseletso.jpg" alt="Puseletso Rakhoabe" class="team-card__photo" 
-                 onerror="this.src='https://placehold.co/150x150/1E3A5F/C9A03D?text=PR'">
-            <h3 class="mb-0 mt-2" style="font-size: 1.3rem;">Puseletso Rakhoabe</h3>
-            <span class="team-card__role"><i class="bi bi-star-fill me-1"></i> Coordinator & Director</span>
-            <p class="mt-2 small">Leads the vision, strategy, and ensures every project meets our standards. The glue that holds MPS together.</p>
-            <div class="mt-2">
-              <a href="#" class="text-decoration-none me-2" style="color: var(--navy-soft);"><i class="bi bi-linkedin"></i></a>
-              <a href="#" class="text-decoration-none" style="color: var(--navy-soft);"><i class="bi bi-envelope"></i></a>
-            </div>
+            <img src="images/team/puseletso.jpg" class="team-card__photo" onerror="this.src='https://placehold.co/120x120/1E3A5F/C9A03D?text=PR'">
+            <h3 style="font-size: 1.2rem;">Puseletso Rakhoabe</h3>
+            <span class="team-card__role">Coordinator & Director</span>
+            <p class="small mt-2">Leads vision, strategy, and ensures every project meets our standards.</p>
           </div>
         </div>
-
-        <!-- Team Member 2: Rethabile Matela - Tech Lead -->
         <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
           <div class="team-card">
-            <img src="images/team/rethabile.jpg" alt="Rethabile Matela" class="team-card__photo"
-                 onerror="this.src='https://placehold.co/150x150/1E3A5F/C9A03D?text=RM'">
-            <h3 class="mb-0 mt-2" style="font-size: 1.3rem;">Rethabile Matela</h3>
-            <span class="team-card__role"><i class="bi bi-code-slash me-1"></i> Tech Lead</span>
-            <p class="mt-2 small">Leads web development, system architecture, and ensures all technical deliverables are robust and modern.</p>
-            <div class="mt-2">
-              <a href="#" class="text-decoration-none me-2" style="color: var(--navy-soft);"><i class="bi bi-linkedin"></i></a>
-              <a href="#" class="text-decoration-none" style="color: var(--navy-soft);"><i class="bi bi-github"></i></a>
-            </div>
+            <img src="images/team/rethabile.jpg" class="team-card__photo" onerror="this.src='https://placehold.co/120x120/1E3A5F/C9A03D?text=RM'">
+            <h3 style="font-size: 1.2rem;">Rethabile Matela</h3>
+            <span class="team-card__role">Tech Lead</span>
+            <p class="small mt-2">Leads web development and ensures technical deliverables are robust.</p>
           </div>
         </div>
-
-        <!-- Team Member 3: Boitumelo Lekau - Tech Lead -->
         <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
           <div class="team-card">
-            <img src="images/team/boitumelo.jpg" alt="Boitumelo Lekau" class="team-card__photo"
-                 onerror="this.src='https://placehold.co/150x150/1E3A5F/C9A03D?text=BL'">
-            <h3 class="mb-0 mt-2" style="font-size: 1.3rem;">Boitumelo Lekau</h3>
-            <span class="team-card__role"><i class="bi bi-code-slash me-1"></i> Tech Lead</span>
-            <p class="mt-2 small">Specializes in front-end development, user experience, and creating responsive, beautiful interfaces.</p>
-            <div class="mt-2">
-              <a href="#" class="text-decoration-none me-2" style="color: var(--navy-soft);"><i class="bi bi-linkedin"></i></a>
-              <a href="#" class="text-decoration-none" style="color: var(--navy-soft);"><i class="bi bi-github"></i></a>
-            </div>
+            <img src="images/team/boitumelo.jpg" class="team-card__photo" onerror="this.src='https://placehold.co/120x120/1E3A5F/C9A03D?text=BL'">
+            <h3 style="font-size: 1.2rem;">Boitumelo Lekau</h3>
+            <span class="team-card__role">Tech Lead</span>
+            <p class="small mt-2">Specializes in front-end development and user experience.</p>
           </div>
         </div>
-
-        <!-- Team Member 4: Paballo Tshalatsi - Statistics Lead -->
         <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
           <div class="team-card">
-            <img src="images/team/paballo.jpg" alt="Paballo Tshalatsi" class="team-card__photo"
-                 onerror="this.src='https://placehold.co/150x150/1E3A5F/C9A03D?text=PT'">
-            <h3 class="mb-0 mt-2" style="font-size: 1.3rem;">Paballo Tshalatsi</h3>
-            <span class="team-card__role"><i class="bi bi-graph-up me-1"></i> Statistics Lead</span>
-            <p class="mt-2 small">Expert in SPSS, R, Python, and Excel. Helps clients make sense of their data with rigorous analysis.</p>
-            <div class="mt-2">
-              <a href="#" class="text-decoration-none me-2" style="color: var(--navy-soft);"><i class="bi bi-linkedin"></i></a>
-              <a href="#" class="text-decoration-none" style="color: var(--navy-soft);"><i class="bi bi-envelope"></i></a>
-            </div>
+            <img src="images/team/paballo.jpg" class="team-card__photo" onerror="this.src='https://placehold.co/120x120/1E3A5F/C9A03D?text=PT'">
+            <h3 style="font-size: 1.2rem;">Paballo Tshalatsi</h3>
+            <span class="team-card__role">Statistics Lead</span>
+            <p class="small mt-2">Expert in SPSS, R, Python, and Excel data analysis.</p>
           </div>
         </div>
-
-        <!-- Team Member 5: Tsita Makhele - Marketing Lead -->
         <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
           <div class="team-card">
-            <img src="images/team/tsita.jpg" alt="Tsita Makhele" class="team-card__photo"
-                 onerror="this.src='https://placehold.co/150x150/1E3A5F/C9A03D?text=TM'">
-            <h3 class="mb-0 mt-2" style="font-size: 1.3rem;">Tsita Makhele</h3>
-            <span class="team-card__role"><i class="bi bi-megaphone-fill me-1"></i> Marketing Lead</span>
-            <p class="mt-2 small">Drives brand strategy, client outreach, and ensures our message reaches those who need us most.</p>
-            <div class="mt-2">
-              <a href="#" class="text-decoration-none me-2" style="color: var(--navy-soft);"><i class="bi bi-linkedin"></i></a>
-              <a href="#" class="text-decoration-none" style="color: var(--navy-soft);"><i class="bi bi-instagram"></i></a>
-            </div>
+            <img src="images/team/tsita.jpg" class="team-card__photo" onerror="this.src='https://placehold.co/120x120/1E3A5F/C9A03D?text=TM'">
+            <h3 style="font-size: 1.2rem;">Tsita Makhele</h3>
+            <span class="team-card__role">Marketing Lead</span>
+            <p class="small mt-2">Drives brand strategy and client outreach.</p>
           </div>
         </div>
       </div>
-
-      <p class="text-center mt-4" style="font-size: 0.875rem; color: #6c757d;">
-        <i class="bi bi-info-circle me-1"></i>
-        <em>Add actual team photos to <strong>images/team/</strong> with filenames: puseletso.jpg, rethabile.jpg, boitumelo.jpg, paballo.jpg, tsita.jpg</em>
-      </p>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════ TEAM STATS + CULTURE -->
-  <section class="section py-5">
-    <div class="container">
-      <div class="row g-4 text-center">
-        <div class="col-md-4" data-aos="fade-up">
-          <i class="bi bi-laptop" style="font-size: 2.5rem; color: var(--gold-warm);"></i>
-          <h3 class="mt-2" style="font-size: 1.8rem; font-weight: 700;">5</h3>
-          <p>Dedicated team members</p>
-        </div>
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-          <i class="bi bi-mortarboard" style="font-size: 2.5rem; color: var(--gold-warm);"></i>
-          <h3 class="mt-2" style="font-size: 1.8rem; font-weight: 700;">3</h3>
-          <p>Academic disciplines</p>
-        </div>
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-          <i class="bi bi-chat-heart" style="font-size: 2.5rem; color: var(--gold-warm);"></i>
-          <h3 class="mt-2" style="font-size: 1.8rem; font-weight: 700;">100%</h3>
-          <p>Committed to Lesotho</p>
-        </div>
-      </div>
+  <section class="py-4">
+    <div class="container text-center">
+      <h2 style="font-size: clamp(1.3rem, 5vw, 1.8rem);">Ready to Work Together?</h2>
+      <p class="mb-3">Whether you need a website, a CV, or help with research data — we're here.</p>
+      <a href="contact.html" class="btn--gold">Get in Touch <i class="bi bi-arrow-right ms-2"></i></a>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════ CTA BANNER -->
-  <section class="cta-banner py-5" aria-label="Call to action">
-    <div class="container py-4 text-center" data-aos="zoom-in">
-      <h2 class="mb-3"><i class="bi bi-handshake me-2"></i>Ready to Work Together?</h2>
-      <p class="lead mb-4">Whether you need a website, a CV, or help with your research data — we're here and ready to help.</p>
-      <div class="d-flex gap-3 justify-content-center flex-wrap">
-        <a href="contact.html" class="btn btn--primary btn-lg"><i class="bi bi-envelope-fill me-2"></i>Get in Touch</a>
-        <a href="services.html" class="btn btn--outline btn-lg"><i class="bi bi-grid-fill me-2"></i>Our Services</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════ FOOTER -->
-  <footer class="footer" role="contentinfo" style="background: var(--navy-deep); color: #ccc; padding: 3rem 0 1.5rem;">
+  <footer style="background: var(--navy-deep); color: #ccc; padding: 2rem 0 1rem;">
     <div class="container">
       <div class="row g-4">
         <div class="col-lg-4">
-          <img src="images/logo.png" alt="Maluti Peak Solutions" style="height: 45px; filter: brightness(0) invert(1);" />
-          <p class="mt-3">A student-led digital consultancy providing affordable, modern digital services to students, entrepreneurs, and small businesses in Lesotho.</p>
-          <div class="footer__social mt-3">
-            <a href="#" class="footer__social-link" style="color: white; background: rgba(255,255,255,0.1); display: inline-flex; width: 36px; height: 36px; border-radius: 36px; align-items: center; justify-content: center; margin-right: 0.5rem;"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="footer__social-link" style="color: white; background: rgba(255,255,255,0.1); display: inline-flex; width: 36px; height: 36px; border-radius: 36px; align-items: center; justify-content: center; margin-right: 0.5rem;"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="footer__social-link" style="color: white; background: rgba(255,255,255,0.1); display: inline-flex; width: 36px; height: 36px; border-radius: 36px; align-items: center; justify-content: center; margin-right: 0.5rem;"><i class="bi bi-linkedin"></i></a>
-            <a href="#" class="footer__social-link" style="color: white; background: rgba(255,255,255,0.1); display: inline-flex; width: 36px; height: 36px; border-radius: 36px; align-items: center; justify-content: center;"><i class="bi bi-whatsapp"></i></a>
-          </div>
+          <img src="images/logo.png" alt="Maluti Peak Solutions" style="height: 40px; filter: brightness(0) invert(1);" />
+          <p class="mt-2 small">A student-led digital consultancy for Lesotho.</p>
         </div>
         <div class="col-6 col-md-4 col-lg-2">
-          <p class="footer__col-title" style="color: var(--gold-warm); font-weight: 600;">Services</p>
-          <ul class="list-unstyled">
-            <li><a href="services/website-design.html" class="footer__link" style="color: #ccc; text-decoration: none;">Website Design</a></li>
-            <li><a href="services/blog-creation.html" class="footer__link" style="color: #ccc; text-decoration: none;">Blog Creation</a></li>
-            <li><a href="services/cv-design.html" class="footer__link" style="color: #ccc; text-decoration: none;">CV Design</a></li>
-            <li><a href="services/statistical-analysis.html" class="footer__link" style="color: #ccc; text-decoration: none;">Statistical Analysis</a></li>
+          <p style="color: var(--gold-warm); font-weight: 600;">Services</p>
+          <ul class="list-unstyled small">
+            <li><a href="services/website-design.html" style="color: #ccc; text-decoration: none;">Website Design</a></li>
+            <li><a href="services/blog-creation.html" style="color: #ccc; text-decoration: none;">Blog Creation</a></li>
+            <li><a href="services/cv-design.html" style="color: #ccc; text-decoration: none;">CV Design</a></li>
+            <li><a href="services/statistical-analysis.html" style="color: #ccc; text-decoration: none;">Statistical Analysis</a></li>
           </ul>
         </div>
         <div class="col-6 col-md-4 col-lg-2">
-          <p class="footer__col-title" style="color: var(--gold-warm); font-weight: 600;">Company</p>
-          <ul class="list-unstyled">
-            <li><a href="about.html" class="footer__link" style="color: #ccc; text-decoration: none;">About Us</a></li>
-            <li><a href="portfolio.html" class="footer__link" style="color: #ccc; text-decoration: none;">Portfolio</a></li>
-            <li><a href="blog.html" class="footer__link" style="color: #ccc; text-decoration: none;">Blog</a></li>
-            <li><a href="contact.html" class="footer__link" style="color: #ccc; text-decoration: none;">Contact</a></li>
+          <p style="color: var(--gold-warm); font-weight: 600;">Company</p>
+          <ul class="list-unstyled small">
+            <li><a href="about.html" style="color: #ccc; text-decoration: none;">About Us</a></li>
+            <li><a href="contact.html" style="color: #ccc; text-decoration: none;">Contact</a></li>
           </ul>
         </div>
         <div class="col-md-4 col-lg-4">
-          <p class="footer__col-title" style="color: var(--gold-warm); font-weight: 600;">Contact</p>
-          <ul class="list-unstyled">
-            <li><a href="mailto:info@malutipeak.co.ls" class="footer__link" style="color: #ccc; text-decoration: none;"><i class="bi bi-envelope me-2"></i>info@malutipeak.co.ls</a></li>
-            <li><a href="tel:+26658398399" class="footer__link" style="color: #ccc; text-decoration: none;"><i class="bi bi-telephone me-2"></i>+266 58 398 399</a></li>
-            <li><span class="footer__link" style="color: #ccc;"><i class="bi bi-geo-alt me-2"></i>Maseru, Lesotho</span></li>
+          <p style="color: var(--gold-warm); font-weight: 600;">Contact</p>
+          <ul class="list-unstyled small">
+            <li><a href="mailto:info@malutipeak.co.ls" style="color: #ccc; text-decoration: none;">info@malutipeak.co.ls</a></li>
+            <li><a href="tel:+26658398399" style="color: #ccc; text-decoration: none;">+266 58 398 399</a></li>
+            <li>Maseru, Lesotho</li>
           </ul>
         </div>
       </div>
-      <div class="footer__bottom text-center mt-5 pt-3 border-top border-secondary">
-        <span>&copy; <span id="year"></span> Maluti Peak Solutions. All rights reserved.</span>
-        <span class="ms-3">Designed & Built in Lesotho 🇱🇸</span>
+      <div class="text-center mt-3 pt-2 border-top border-secondary small">
+        <span>&copy; <span id="year"></span> Maluti Peak Solutions. Built in Lesotho 🇱🇸</span>
       </div>
     </div>
   </footer>
@@ -506,22 +387,12 @@
     document.getElementById('year').textContent = new Date().getFullYear();
     AOS.init({ once: true, offset: 60, duration: 600 });
     
-    // Mobile menu toggle
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
     if (hamburger && navLinks) {
-      hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('show');
-      });
+      hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
+      navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('show')));
     }
   </script>
-  <style>
-    @media (max-width: 991px) {
-      .nav__links { display: none; flex-direction: column; background: #0A1A2F; padding: 1rem; border-radius: 12px; margin-top: 1rem; width: 100%; }
-      .nav__links.show { display: flex; }
-      .nav__inner { flex-wrap: wrap; }
-      .nav__inner .container { flex-direction: column; }
-    }
-  </style>
 </body>
 </html>
