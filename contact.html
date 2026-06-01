@@ -2,266 +2,725 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us — Maluti Peak Solutions</title>
-  <meta name="description" content="Get in touch with Maluti Peak Solutions. Tell us what you need and we'll come back to you with a clear plan and a fair quote." />
-  <meta property="og:title"       content="Contact — Maluti Peak Solutions" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Contact Us — Maluti Peak Solutions | Get in Touch</title>
+  <meta name="description" content="Get in touch with Maluti Peak Solutions. Tell us what you need and we'll come back to you with a clear plan and a fair quote — no jargon, no pressure." />
+  <meta property="og:title" content="Contact — Maluti Peak Solutions" />
   <meta property="og:description" content="Reach out to start your project." />
-  <meta property="og:type"        content="website" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="images/maluti-bg.jpg" />
 
-  <!-- Bootstrap 5.3 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- Bootstrap Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
-  <!-- AOS -->
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-  <!-- Google Fonts -->
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" type="image/png" href="images/logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <style>
+    /* ============================================
+       COLOR SYSTEM — Black | Navy Blue | Gold
+       (Identical to index page)
+       ============================================ */
+    :root {
+      --navy-deep: #0A1929;
+      --navy-dark: #0F2A3D;
+      --navy-soft: #1A3A4F;
+      --navy-light: rgba(10, 25, 41, 0.08);
+      --gold: #D4AF37;
+      --gold-light: #E6C65C;
+      --gold-dark: #B4942F;
+      --gold-glow: rgba(212, 175, 55, 0.25);
+      --black: #0A0C10;
+      --black-soft: #15171E;
+      --cream-light: #F8F9FC;
+      --white: #FFFFFF;
+      --off-white: #FDFDFE;
+      --gray-mid: #8B92A4;
+      --glass: rgba(255, 255, 255, 0.06);
+      --blur: 20px;
+      
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+      --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+      --shadow-gold: 0 4px 20px rgba(212, 175, 55, 0.25);
+      
+      --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-smooth: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+      
+      --radius-sm: 0.375rem;
+      --radius-md: 0.75rem;
+      --radius-lg: 1rem;
+      --radius-xl: 1.5rem;
+      --radius-2xl: 2rem;
+      --radius-full: 9999px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    body { 
+      background-color: var(--cream-light);
+      font-family: 'Inter', system-ui, sans-serif; 
+      color: var(--black); 
+      line-height: 1.6; 
+      font-size: 16px; 
+      overflow-x: hidden;
+    }
+    *:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    a { text-decoration: none; color: inherit; transition: color var(--transition-base); }
+    img { max-width: 100%; height: auto; display: block; }
+    ul { list-style: none; }
+    .font-serif { font-family: 'Playfair Display', Georgia, serif; }
+
+    /* ============================================
+       CURSOR LIGHT FIELD (Interactive glow)
+       ============================================ */
+    .cursor-light {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 100;
+      background: radial-gradient(circle farthest-corner, rgba(212, 175, 55, 0.5), transparent 50%);
+      transform: translate(-50%, -50%);
+      mix-blend-mode: screen;
+      opacity: 0.7;
+    }
+
+    /* ============================================
+       FLOATING SPATIAL BLOBS
+       ============================================ */
+    .blob {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.1;
+      animation: floatBlob 22s infinite ease-in-out;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .blob.one { background: var(--gold); top: -150px; left: -100px; }
+    .blob.two { background: var(--navy-deep); bottom: -120px; right: -120px; animation-delay: 5s; }
+    .blob.three { background: var(--navy-soft); top: 40%; left: 70%; animation-delay: 10s; width: 400px; height: 400px; }
+    @keyframes floatBlob {
+      0%, 100% { transform: translateY(0px) translateX(0px) scale(1); }
+      50% { transform: translateY(-40px) translateX(30px) scale(1.08); }
+    }
+
+    /* ============================================
+       NAVIGATION — CLEAR TRANSPARENT, THEN SCROLL GLASS
+       ============================================ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 300;
+      padding: 0 1.5rem;
+      background: transparent;
+      backdrop-filter: none;
+      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+    .nav.scrolled {
+      background: rgba(10, 12, 16, 0.72);
+      backdrop-filter: blur(18px) saturate(180%);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.28);
+      box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.2);
+    }
+    .nav__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+    .nav__logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-shrink: 0;
+      height: 100%;
+    }
+    .nav__logo-img {
+      height: 52px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      object-fit: contain;
+    }
+    .nav__logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .nav__logo-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+      color: white;
+      line-height: 1.2;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+    .nav__logo-sub {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+    }
+    .nav__links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    .nav__item {
+      position: relative;
+    }
+    .nav__link {
+      font-weight: 500;
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.9);
+      transition: color var(--transition-base);
+      padding: 0.5rem 0;
+      position: relative;
+      cursor: pointer;
+      display: inline-block;
+    }
+    .nav__link:hover { color: var(--gold); }
+    .nav__link--active { color: var(--gold); border-bottom: 2px solid var(--gold); }
+    .nav__link--has-dropdown { display: flex; align-items: center; gap: 0.25rem; }
+    .nav__link--has-dropdown::after { content: '\F282'; font-family: 'bootstrap-icons'; font-size: 0.7rem; transition: transform var(--transition-base); }
+    .nav__item:hover .nav__link--has-dropdown::after { transform: rotate(180deg); }
+    .nav__dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: rgba(10, 12, 16, 0.95);
+      backdrop-filter: blur(18px);
+      border-radius: var(--radius-lg);
+      padding: 0.75rem 0;
+      min-width: 220px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all var(--transition-base);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+      z-index: 301;
+    }
+    .nav__item:hover .nav__dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .nav__dropdown-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.6rem 1.25rem;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.8rem;
+      transition: all var(--transition-base);
+    }
+    .nav__dropdown-link:hover {
+      background: rgba(212, 175, 55, 0.15);
+      color: var(--gold);
+      padding-left: 1.5rem;
+    }
+    .nav__cta {
+      background: var(--gold);
+      color: var(--black);
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: all var(--transition-base);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .nav__cta:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-gold);
+    }
+    .nav__hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      color: white;
+      font-size: 1.5rem;
+    }
+
+    /* ============================================
+       PAGE HERO — Consistent with index
+       ============================================ */
+    .page-hero {
+      min-height: 50vh;
+      padding: 8rem 1.5rem 4rem;
+      position: relative;
+      background: linear-gradient(135deg, #0A0C10 0%, #0A1929 40%, #0F2A3D 100%);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .page-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(212, 175, 55, 0.08), transparent 50%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .page-hero__container {
+      position: relative;
+      z-index: 3;
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .page-hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(212, 175, 55, 0.12);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      padding: 0.5rem 1.25rem;
+      border-radius: var(--radius-full);
+      color: var(--gold-light);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+    .page-hero__title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: white;
+      max-width: 750px;
+      margin-bottom: 1.5rem;
+    }
+    .page-hero__sub {
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 600px;
+      line-height: 1.7;
+    }
+
+    /* ============================================
+       CONTACT SECTION
+       ============================================ */
+    .section { padding: 5rem 1.5rem; position: relative; background: var(--cream-light); z-index: 2; }
+    .section--alt { background: var(--white); }
+    .container { max-width: 1200px; margin: 0 auto; width: 100%; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .eyebrow::before { content: ''; width: 24px; height: 2px; background: var(--gold); border-radius: var(--radius-full); }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    /* Contact Layout */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .contact-info__item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .contact-info__icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--navy-deep), var(--navy-soft));
+      border-radius: var(--radius-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 1.4rem;
+    }
+    .contact-info__text {
+      display: flex;
+      flex-direction: column;
+    }
+    .contact-info__text strong { color: var(--black); font-weight: 700; margin-bottom: 0.2rem; }
+    .contact-info__text span { color: var(--gray-mid); font-size: 0.9rem; }
+    .contact-info__text a { color: var(--gold-dark); }
+    .contact-info__text a:hover { color: var(--gold); }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+    .social-link {
+      width: 42px;
+      height: 42px;
+      background: var(--white);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--navy-deep);
+      font-size: 1.2rem;
+      transition: all var(--transition-base);
+    }
+    .social-link:hover {
+      background: var(--gold);
+      color: var(--black);
+      transform: translateY(-3px);
+      border-color: var(--gold);
+    }
+
+    /* Contact Form */
+    .contact-form {
+      background: var(--white);
+      border-radius: var(--radius-2xl);
+      padding: 2rem;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 0; }
+    label { display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 0.5rem; color: var(--black); }
+    input, select, textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius-lg);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      transition: all var(--transition-base);
+      background: var(--white);
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+    }
+    textarea { min-height: 130px; resize: vertical; }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--black);
+      padding: 1rem;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all var(--transition-base);
+      border: none;
+      width: 100%;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-3px); box-shadow: var(--shadow-gold); }
+
+    /* FAQ Items */
+    .faq-item {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      transition: all var(--transition-base);
+    }
+    .faq-item summary {
+      padding: 1.25rem 1.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
+      color: var(--black);
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary i { transition: transform var(--transition-base); }
+    .faq-item[open] summary i { transform: rotate(45deg); }
+    .faq-item p { padding: 0 1.5rem 1.25rem 1.5rem; color: var(--gray-mid); margin: 0; }
+
+    /* Footer */
+    .footer {
+      background: var(--black);
+      color: var(--gray-mid);
+      padding: 4rem 1.5rem 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    .footer h4, .footer h5 { color: white; margin-bottom: 1rem; font-family: 'Playfair Display', serif; }
+    .footer__link { color: var(--gray-mid); transition: color var(--transition-base); }
+    .footer__link:hover { color: var(--gold); }
+
+    @media (max-width: 768px) {
+      .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .form-row { grid-template-columns: 1fr; gap: 1rem; }
+      .nav__links { display: none; }
+      .nav__hamburger { display: block; }
+      .nav.scrolled .nav__links.open { display: flex; flex-direction: column; position: absolute; top: 80px; left: 0; right: 0; background: rgba(10,12,16,0.95); backdrop-filter: blur(12px); padding: 1.5rem; gap: 1rem; border-bottom: 1px solid rgba(212,175,55,0.3); }
+      .nav__links.open { display: flex !important; }
+      .nav__dropdown { position: static; background: transparent; backdrop-filter: none; padding-left: 1rem; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: none; display: none; }
+      .nav__item:hover .nav__dropdown { display: block; }
+      .contact-form { padding: 1.5rem; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ══════════════════════════════════════════ NAVIGATION -->
-  <nav class="nav" role="navigation" aria-label="Main navigation">
-    <div class="container nav__inner">
-      <a href="index.html" class="nav__logo" aria-label="Maluti Peak Solutions home">
-        <img src="images/logo.png" alt="Maluti Peak Solutions logo" class="nav__logo-img" loading="lazy" />
-        <div class="nav__logo-text" style="display:none;">MPS<div class="nav__logo-sub">Maluti Peak Solutions</div></div>
-      </a>
-      <ul class="nav__links" id="navLinks">
-        <li class="nav__item"><a href="index.html"    class="nav__link">Home</a></li>
-        <li class="nav__item"><a href="about.html"    class="nav__link">About</a></li>
-        <li class="nav__item">
-          <a href="services.html" class="nav__link nav__link--has-dropdown" aria-haspopup="true">Services</a>
-          <ul class="nav__dropdown">
-            <li><a href="services/website-design.html"       class="nav__dropdown-link"><i class="bi bi-globe2 me-2"></i>Website Design</a></li>
-            <li><a href="services/blog-creation.html"        class="nav__dropdown-link"><i class="bi bi-pencil-square me-2"></i>Blog Creation</a></li>
-            <li><a href="services/cv-design.html"            class="nav__dropdown-link"><i class="bi bi-file-person me-2"></i>CV Design</a></li>
-            <li><a href="services/statistical-analysis.html" class="nav__dropdown-link"><i class="bi bi-graph-up me-2"></i>Statistical Analysis</a></li>
-          </ul>
-        </li>
-        <li class="nav__item"><a href="blog.html"      class="nav__link">Blog</a></li>
-        <li class="nav__item"><a href="portfolio.html" class="nav__link">Portfolio</a></li>
-        <li class="nav__item"><a href="contact.html"   class="nav__link nav__link--active">Contact</a></li>
-      </ul>
-      <a href="contact.html" class="nav__cta">Get in Touch</a>
-      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
+<!-- CURSOR LIGHT -->
+<div class="cursor-light" id="cursorLight"></div>
 
-  <!-- ══════════════════════════════════════════ PAGE HERO -->
-  <div class="page-hero">
-    <div class="container" data-aos="fade-up">
-      <span class="section__tag" style="background:rgba(245,166,35,0.15);color:var(--gold);">
-        <i class="bi bi-chat-dots-fill me-1"></i> Get in Touch
-      </span>
-      <h1>Contact Us</h1>
-      <p>Tell us what you're working on and we'll come back to you with a clear plan and a fair quote — no jargon, no pressure.</p>
+<!-- FLOATING BLOBS -->
+<div class="blob one"></div>
+<div class="blob two"></div>
+<div class="blob three"></div>
+
+<nav class="nav" id="mainNav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">
+      <img src="images/logo.png" alt="Maluti Peak Solutions" class="nav__logo-img" onerror="this.style.display='none'" />
+      <div class="nav__logo-text">
+        <div class="nav__logo-name">Maluti Peak</div>
+        <div class="nav__logo-sub">Solutions</div>
+      </div>
+    </a>
+    <ul class="nav__links" id="navLinks">
+      <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+      <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+      <li class="nav__item">
+        <a href="services.html" class="nav__link nav__link--has-dropdown">Services</a>
+        <ul class="nav__dropdown">
+          <li><a href="services/website-design.html" class="nav__dropdown-link"><i class="bi bi-globe2"></i>Website Design</a></li>
+          <li><a href="services/blog-creation.html" class="nav__dropdown-link"><i class="bi bi-pencil-square"></i>Blog Creation</a></li>
+          <li><a href="services/cv-design.html" class="nav__dropdown-link"><i class="bi bi-file-person"></i>CV Design</a></li>
+          <li><a href="services/statistical-analysis.html" class="nav__dropdown-link"><i class="bi bi-graph-up"></i>Statistical Analysis</a></li>
+        </ul>
+      </li>
+      <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
+      <li class="nav__item"><a href="contact.html" class="nav__link nav__link--active">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav__cta">Get in Touch <i class="bi bi-arrow-right-short"></i></a>
+    <button class="nav__hamburger" id="hamburger"><i class="bi bi-list"></i></button>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero__container">
+    <div class="page-hero__badge"><i class="bi bi-chat-dots-fill me-2"></i> Get in Touch</div>
+    <h1 class="page-hero__title">Contact Us</h1>
+    <p class="page-hero__sub">Tell us what you're working on and we'll come back to you with a clear plan and a fair quote — no jargon, no pressure.</p>
+  </div>
+</section>
+
+<!-- CONTACT LAYOUT -->
+<section class="section">
+  <div class="container">
+    <div class="contact-layout">
+      <!-- Left: Contact info -->
+      <div data-aos="fade-right">
+        <h2 class="section-title" style="margin-bottom: 1.5rem;">Let's Start a Conversation</h2>
+        <p class="section-sub" style="margin-bottom: 2rem;">Whether you have a specific project in mind or you're just exploring your options, we're happy to chat. Most inquiries get a response within 24 hours.</p>
+
+        <div class="contact-info__item">
+          <div class="contact-info__icon"><i class="bi bi-envelope-fill"></i></div>
+          <div class="contact-info__text">
+            <strong>Email</strong>
+            <span><a href="mailto:info@malutipeak.co.ls">info@malutipeak.co.ls</a></span>
+          </div>
+        </div>
+        <div class="contact-info__item">
+          <div class="contact-info__icon"><i class="bi bi-telephone-fill"></i></div>
+          <div class="contact-info__text">
+            <strong>Phone / WhatsApp</strong>
+            <span><a href="tel:+26658398399">+266 58 398 399</a></span>
+          </div>
+        </div>
+        <div class="contact-info__item">
+          <div class="contact-info__icon"><i class="bi bi-geo-alt-fill"></i></div>
+          <div class="contact-info__text">
+            <strong>Location</strong>
+            <span>Maseru, Lesotho</span>
+          </div>
+        </div>
+        <div class="contact-info__item">
+          <div class="contact-info__icon"><i class="bi bi-clock-fill"></i></div>
+          <div class="contact-info__text">
+            <strong>Response Time</strong>
+            <span>Usually within 24 hours on weekdays</span>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <p class="eyebrow" style="margin-bottom: 1rem;">Find Us On</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="social-link" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+            <a href="#" class="social-link" aria-label="Twitter/X"><i class="bi bi-twitter-x"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Contact form -->
+      <div data-aos="fade-left">
+        <div class="contact-form">
+          <h3 style="font-family: 'Playfair Display', serif; font-weight: 700; margin-bottom: 0.5rem;">Send Us a Message</h3>
+          <p style="font-size: 0.875rem; margin-bottom: 1.75rem; color: var(--gray-mid);">Fill in the form below and we'll get back to you as soon as possible.</p>
+
+          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+            <input type="text" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off" />
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Full Name <span style="color: #dc2626;">*</span></label>
+                <input type="text" id="name" name="name" placeholder="Your full name" required autocomplete="name" />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address <span style="color: #dc2626;">*</span></label>
+                <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number <span style="color: var(--gray-mid); font-weight: 400;">(optional)</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="+266 xxxx xxxx" autocomplete="tel" />
+            </div>
+
+            <div class="form-group">
+              <label for="service">Service of Interest <span style="color: #dc2626;">*</span></label>
+              <select id="service" name="service" required>
+                <option value="" disabled selected>Select a service…</option>
+                <option value="website-design">Website Design &amp; Creation</option>
+                <option value="blog-creation">Blog Creation &amp; Setup</option>
+                <option value="cv-design">Professional CV Design</option>
+                <option value="statistical-analysis">Statistical Analysis</option>
+                <option value="multiple">Multiple Services</option>
+                <option value="not-sure">Not Sure Yet</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Your Message <span style="color: #dc2626;">*</span></label>
+              <textarea id="message" name="message" placeholder="Tell us about your project or what you need. The more detail you give, the more specific we can be in our response." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary"><i class="bi bi-send-fill me-2"></i>Send Message</button>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
+</section>
 
-  <!-- ══════════════════════════════════════════ CONTACT LAYOUT -->
-  <section class="section">
-    <div class="container">
-      <div class="contact-layout">
-
-        <!-- Left: Contact info -->
-        <div data-aos="fade-right">
-          <h2 style="margin-bottom:1.5rem;">Let's Start a Conversation</h2>
-          <p>Whether you have a specific project in mind or you're just exploring your options, we're happy to chat. Most inquiries get a response within 24 hours.</p>
-
-          <div class="mt-4">
-            <div class="contact-info__item">
-              <div class="contact-info__icon"><i class="bi bi-envelope-fill"></i></div>
-              <div class="contact-info__text">
-                <strong>Email</strong>
-                <span><a href="mailto:info@malutipeak.co.ls" style="color:var(--blue);">info@malutipeak.co.ls</a></span>
-              </div>
-            </div>
-            <div class="contact-info__item">
-              <div class="contact-info__icon"><i class="bi bi-telephone-fill"></i></div>
-              <div class="contact-info__text">
-                <strong>Phone / WhatsApp</strong>
-                <span><a href="tel:+26658398399" style="color:var(--blue);">+266 58 398 399</a></span>
-              </div>
-            </div>
-            <div class="contact-info__item">
-              <div class="contact-info__icon"><i class="bi bi-geo-alt-fill"></i></div>
-              <div class="contact-info__text">
-                <strong>Location</strong>
-                <span>Maseru, Lesotho</span>
-              </div>
-            </div>
-            <div class="contact-info__item">
-              <div class="contact-info__icon"><i class="bi bi-clock-fill"></i></div>
-              <div class="contact-info__text">
-                <strong>Response Time</strong>
-                <span>Usually within 24 hours on weekdays</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-4">
-            <p style="color:var(--navy); font-family:var(--font-head); font-weight:600; margin-bottom:0.75rem;">Find Us On</p>
-            <div class="social-links">
-              <a href="#" class="social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-              <a href="#" class="social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-              <a href="#" class="social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-              <a href="#" class="social-link" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-              <a href="#" class="social-link" aria-label="Twitter/X"><i class="bi bi-twitter-x"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: Contact form -->
-        <div data-aos="fade-left">
-          <div class="contact-form">
-            <h3 style="margin-bottom:0.5rem;">Send Us a Message</h3>
-            <p style="font-size:0.875rem; margin-bottom:1.75rem;">Fill in the form below and we'll get back to you as soon as possible.</p>
-
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
-              <input type="text" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off" />
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="name">Full Name <span style="color:#dc2626;">*</span></label>
-                  <input type="text" id="name" name="name" placeholder="Your full name" required autocomplete="name" />
-                </div>
-                <div class="form-group">
-                  <label for="email">Email Address <span style="color:#dc2626;">*</span></label>
-                  <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email" />
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="phone">Phone Number <span style="color:var(--text-muted); font-weight:400;">(optional)</span></label>
-                <input type="tel" id="phone" name="phone" placeholder="+266 xxxx xxxx" autocomplete="tel" />
-              </div>
-
-              <div class="form-group">
-                <label for="service">Service of Interest <span style="color:#dc2626;">*</span></label>
-                <select id="service" name="service" required>
-                  <option value="" disabled selected>Select a service…</option>
-                  <option value="website-design">Website Design &amp; Creation</option>
-                  <option value="blog-creation">Blog Creation &amp; Setup</option>
-                  <option value="cv-design">Professional CV Design</option>
-                  <option value="statistical-analysis">Statistical Analysis</option>
-                  <option value="multiple">Multiple Services</option>
-                  <option value="not-sure">Not Sure Yet</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="message">Your Message <span style="color:#dc2626;">*</span></label>
-                <textarea id="message" name="message" placeholder="Tell us about your project or what you need. The more detail you give, the more specific we can be in our response." required></textarea>
-              </div>
-
-              <button type="submit" class="btn btn--primary" style="width:100%; justify-content:center; font-size:1rem; padding:1rem;">
-                <i class="bi bi-send-fill me-2"></i>Send Message
-              </button>
-
-              <div class="alert alert--success" role="alert">
-                <i class="bi bi-check-circle-fill me-2"></i>Your message has been sent! We'll get back to you within 24 hours.
-              </div>
-              <div class="alert alert--error" role="alert">
-                <i class="bi bi-exclamation-circle-fill me-2"></i>Something went wrong. Please try again, or email us directly at <a href="mailto:info@malutipeak.co.ls">info@malutipeak.co.ls</a>.
-              </div>
-
-            </form>
-          </div>
-        </div>
-
-      </div>
+<!-- FAQ SECTION -->
+<section class="section section--alt">
+  <div class="container" style="max-width: 800px;">
+    <div class="section-header section-header--center" data-aos="fade-up">
+      <p class="eyebrow">FAQs</p>
+      <h2 class="section-title">Common Questions</h2>
     </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════ FAQ SECTION -->
-  <section class="section section--alt">
-    <div class="container" style="max-width:800px;">
-      <div class="section__header" data-aos="fade-up">
-        <span class="section__tag"><i class="bi bi-question-circle me-1"></i> FAQs</span>
-        <h2>Common Questions</h2>
-      </div>
-      <div class="d-flex flex-column gap-3" data-aos="fade-up">
-        <details class="faq-item">
-          <summary>How much do your services cost? <i class="bi bi-plus-lg"></i></summary>
-          <p>We don't have fixed prices because every project is different. We'll give you a clear, honest quote after you tell us what you need — no surprises, no hidden fees.</p>
-        </details>
-        <details class="faq-item">
-          <summary>How long does a project take? <i class="bi bi-plus-lg"></i></summary>
-          <p>It depends on the service and scope. A CV typically takes 2–3 days. A basic website takes 1–2 weeks. We'll give you a realistic timeline when we discuss your project.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Do you work with clients outside Lesotho? <i class="bi bi-plus-lg"></i></summary>
-          <p>Yes — all our services can be delivered remotely. We work via email, WhatsApp, and video calls, so location is not a barrier.</p>
-        </details>
-        <details class="faq-item">
-          <summary>What do I need to provide to get started? <i class="bi bi-plus-lg"></i></summary>
-          <p>Just a description of what you need. We'll ask follow-up questions from there. For a website, we'll need your content and branding. For a CV, your experience history. For data analysis, your dataset and research questions.</p>
-        </details>
-      </div>
+    <div class="d-flex flex-column gap-3" data-aos="fade-up">
+      <details class="faq-item">
+        <summary>How much do your services cost? <i class="bi bi-plus-lg" style="float: right;"></i></summary>
+        <p>We don't have fixed prices because every project is different. We'll give you a clear, honest quote after you tell us what you need — no surprises, no hidden fees.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How long does a project take? <i class="bi bi-plus-lg" style="float: right;"></i></summary>
+        <p>It depends on the service and scope. A CV typically takes 2–3 days. A basic website takes 1–2 weeks. We'll give you a realistic timeline when we discuss your project.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do you work with clients outside Lesotho? <i class="bi bi-plus-lg" style="float: right;"></i></summary>
+        <p>Yes — all our services can be delivered remotely. We work via email, WhatsApp, and video calls, so location is not a barrier.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What do I need to provide to get started? <i class="bi bi-plus-lg" style="float: right;"></i></summary>
+        <p>Just a description of what you need. We'll ask follow-up questions from there. For a website, we'll need your content and branding. For a CV, your experience history. For data analysis, your dataset and research questions.</p>
+      </details>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ══════════════════════════════════════════ FOOTER -->
-  <footer class="footer" role="contentinfo">
-    <div class="container">
-      <div class="row g-4 footer__top">
-        <div class="col-lg-4 footer__brand">
-          <img src="images/logo.png" alt="Maluti Peak Solutions" class="footer__logo" loading="lazy" />
-          <p class="mt-3">A student-led digital consultancy providing affordable, modern digital services to students, entrepreneurs, and small businesses in Lesotho.</p>
-          <div class="footer__social mt-3">
-            <a href="#" class="footer__social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="footer__social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="footer__social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-            <a href="#" class="footer__social-link" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-          </div>
-        </div>
-        <div class="col-6 col-md-4 col-lg-2">
-          <p class="footer__col-title">Services</p>
-          <ul class="footer__links">
-            <li><a href="services/website-design.html"       class="footer__link">Website Design</a></li>
-            <li><a href="services/blog-creation.html"        class="footer__link">Blog Creation</a></li>
-            <li><a href="services/cv-design.html"            class="footer__link">CV Design</a></li>
-            <li><a href="services/statistical-analysis.html" class="footer__link">Statistical Analysis</a></li>
-          </ul>
-        </div>
-        <div class="col-6 col-md-4 col-lg-2">
-          <p class="footer__col-title">Company</p>
-          <ul class="footer__links">
-            <li><a href="about.html"     class="footer__link">About Us</a></li>
-            <li><a href="portfolio.html" class="footer__link">Portfolio</a></li>
-            <li><a href="blog.html"      class="footer__link">Blog</a></li>
-            <li><a href="contact.html"   class="footer__link">Contact</a></li>
-          </ul>
-        </div>
-        <div class="col-md-4 col-lg-4">
-          <p class="footer__col-title">Contact</p>
-          <ul class="footer__links">
-            <li><a href="mailto:info@malutipeak.co.ls" class="footer__link"><i class="bi bi-envelope me-2"></i>info@malutipeak.co.ls</a></li>
-            <li><a href="tel:+26658398399"             class="footer__link"><i class="bi bi-telephone me-2"></i>+266 58 398 399</a></li>
-            <li><span class="footer__link"><i class="bi bi-geo-alt me-2"></i>Maseru, Lesotho</span></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer__bottom">
-        <span>&copy; <span id="year"></span> Maluti Peak Solutions. All rights reserved.</span>
-        <span>Designed &amp; Built in Lesotho 🇱🇸</span>
-      </div>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__grid" style="display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; max-width:1200px; margin:0 auto;">
+      <div class="footer__brand"><h4>Maluti Peak Solutions</h4><p>Student-led digital consultancy based in Maseru, Lesotho.</p><div class="footer__social mt-3"><a href="#" class="footer__link me-3"><i class="bi bi-facebook"></i></a><a href="#" class="footer__link me-3"><i class="bi bi-instagram"></i></a><a href="#" class="footer__link"><i class="bi bi-linkedin"></i></a></div></div>
+      <div><h5>Services</h5><ul><li><a href="services/website-design.html" class="footer__link">Website Design</a></li><li><a href="services/blog-creation.html" class="footer__link">Blog Creation</a></li><li><a href="services/cv-design.html" class="footer__link">CV Design</a></li><li><a href="services/statistical-analysis.html" class="footer__link">Statistical Analysis</a></li></ul></div>
+      <div><h5>Company</h5><ul><li><a href="about.html" class="footer__link">About Us</a></li><li><a href="#" class="footer__link">Portfolio</a></li><li><a href="#" class="footer__link">Blog</a></li><li><a href="contact.html" class="footer__link">Contact</a></li></ul></div>
+      <div><h5>Connect</h5><ul><li><a href="mailto:info@malutipeak.co.ls" class="footer__link"><i class="bi bi-envelope"></i> info@malutipeak.co.ls</a></li><li><a href="tel:+26658398399" class="footer__link"><i class="bi bi-telephone"></i> +266 58 398 399</a></li><li><span class="footer__link"><i class="bi bi-geo-alt"></i> Maseru, Lesotho</span></li></ul></div>
     </div>
-  </footer>
+    <div class="footer__bottom" style="text-align:center; margin-top:2rem;"><span>© 2026 Maluti Peak Solutions — Built in Lesotho 🇱🇸</span></div>
+  </div>
+</footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script src="js/main.js"></script>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    AOS.init({ once: true, offset: 60, duration: 600 });
-  </script>
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+  
+  const cursor = document.getElementById("cursorLight");
+  document.addEventListener("mousemove", (e) => {
+    gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.4, ease: "power2.out" });
+    document.documentElement.style.setProperty("--x", e.clientX + "px");
+    document.documentElement.style.setProperty("--y", e.clientY + "px");
+  });
+  
+  const nav = document.getElementById("mainNav");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 20) nav.classList.add("scrolled");
+    else nav.classList.remove("scrolled");
+  });
+  
+  // GSAP scroll animations
+  gsap.utils.toArray(".contact-layout, .faq-item").forEach(el => {
+    gsap.from(el, {
+      scrollTrigger: { trigger: el, start: "top 85%", toggleActions: "play none none reverse" },
+      opacity: 0,
+      y: 40,
+      duration: 0.8,
+      ease: "power3.out"
+    });
+  });
+  
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("navLinks");
+  if (hamburger) hamburger.addEventListener("click", () => navLinks.classList.toggle("open"));
+</script>
 </body>
 </html>

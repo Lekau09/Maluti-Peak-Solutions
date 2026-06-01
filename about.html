@@ -2,273 +2,611 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Us — Maluti Peak Solutions</title>
-  <meta name="description" content="Learn about Maluti Peak Solutions — a student-led digital consultancy in Lesotho built to make professional digital services accessible to everyone." />
-  <meta property="og:title"       content="About Maluti Peak Solutions" />
-  <meta property="og:description" content="Our story, mission, vision, and values." />
-  <meta property="og:type"        content="website" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>About Us — Maluti Peak Solutions | Lesotho Student-Led Consultancy</title>
+  <meta name="description" content="Learn about Maluti Peak Solutions — a student-led digital consultancy in Lesotho built to make professional digital services accessible to everyone. Our story, mission, vision, and values." />
+  <meta property="og:title" content="About Maluti Peak Solutions" />
+  <meta property="og:description" content="Our story, mission, vision, and values — rooted in Lesotho, driven by excellence." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="images/maluti-bg.jpg" />
 
-  <!-- Bootstrap 5.3 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- Bootstrap Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
-  <!-- AOS -->
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-  <!-- Google Fonts -->
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" type="image/png" href="images/logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <style>
+    /* ============================================
+       COLOR SYSTEM — Black | Navy Blue | Gold
+       (Identical to index page)
+       ============================================ */
+    :root {
+      --navy-deep: #0A1929;
+      --navy-dark: #0F2A3D;
+      --navy-soft: #1A3A4F;
+      --navy-light: rgba(10, 25, 41, 0.08);
+      --gold: #D4AF37;
+      --gold-light: #E6C65C;
+      --gold-dark: #B4942F;
+      --gold-glow: rgba(212, 175, 55, 0.25);
+      --black: #0A0C10;
+      --black-soft: #15171E;
+      --cream-light: #F8F9FC;
+      --white: #FFFFFF;
+      --off-white: #FDFDFE;
+      --gray-mid: #8B92A4;
+      --glass: rgba(255, 255, 255, 0.06);
+      --blur: 20px;
+      
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+      --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+      --shadow-gold: 0 4px 20px rgba(212, 175, 55, 0.25);
+      
+      --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-smooth: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+      
+      --radius-sm: 0.375rem;
+      --radius-md: 0.75rem;
+      --radius-lg: 1rem;
+      --radius-xl: 1.5rem;
+      --radius-2xl: 2rem;
+      --radius-full: 9999px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    body { 
+      background-color: var(--cream-light);
+      font-family: 'Inter', system-ui, sans-serif; 
+      color: var(--black); 
+      line-height: 1.6; 
+      font-size: 16px; 
+      overflow-x: hidden;
+    }
+    *:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    a { text-decoration: none; color: inherit; transition: color var(--transition-base); }
+    img { max-width: 100%; height: auto; display: block; }
+    ul { list-style: none; }
+    .font-serif { font-family: 'Playfair Display', Georgia, serif; }
+
+    /* ============================================
+       CURSOR LIGHT FIELD (Interactive glow)
+       ============================================ */
+    .cursor-light {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 100;
+      background: radial-gradient(circle farthest-corner, rgba(212, 175, 55, 0.5), transparent 50%);
+      transform: translate(-50%, -50%);
+      mix-blend-mode: screen;
+      opacity: 0.7;
+    }
+
+    /* ============================================
+       FLOATING SPATIAL BLOBS
+       ============================================ */
+    .blob {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.1;
+      animation: floatBlob 22s infinite ease-in-out;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .blob.one { background: var(--gold); top: -150px; left: -100px; }
+    .blob.two { background: var(--navy-deep); bottom: -120px; right: -120px; animation-delay: 5s; }
+    .blob.three { background: var(--navy-soft); top: 40%; left: 70%; animation-delay: 10s; width: 400px; height: 400px; }
+    @keyframes floatBlob {
+      0%, 100% { transform: translateY(0px) translateX(0px) scale(1); }
+      50% { transform: translateY(-40px) translateX(30px) scale(1.08); }
+    }
+
+    /* ============================================
+       NAVIGATION — CLEAR TRANSPARENT, THEN SCROLL GLASS
+       ============================================ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 300;
+      padding: 0 1.5rem;
+      background: transparent;
+      backdrop-filter: none;
+      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+    .nav.scrolled {
+      background: rgba(10, 12, 16, 0.72);
+      backdrop-filter: blur(18px) saturate(180%);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.28);
+      box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.2);
+    }
+    .nav__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+    .nav__logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-shrink: 0;
+      height: 100%;
+    }
+    .nav__logo-img {
+      height: 52px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      object-fit: contain;
+    }
+    .nav__logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .nav__logo-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+      color: white;
+      line-height: 1.2;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+    .nav__logo-sub {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+    }
+    .nav__links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    .nav__link {
+      font-weight: 500;
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.9);
+      transition: color var(--transition-base);
+      padding: 0.5rem 0;
+      position: relative;
+      cursor: pointer;
+    }
+    .nav__link:hover { color: var(--gold); }
+    .nav__link--active { color: var(--gold); border-bottom: 2px solid var(--gold); }
+    .nav__cta {
+      background: var(--gold);
+      color: var(--black);
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: all var(--transition-base);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .nav__cta:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-gold);
+    }
+    .nav__hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      color: white;
+      font-size: 1.5rem;
+    }
+
+    /* ============================================
+       PAGE HERO — Consistent with index
+       ============================================ */
+    .page-hero {
+      min-height: 60vh;
+      padding: 8rem 1.5rem 4rem;
+      position: relative;
+      background: linear-gradient(135deg, #0A0C10 0%, #0A1929 40%, #0F2A3D 100%);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .page-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(212, 175, 55, 0.08), transparent 50%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .page-hero__container {
+      position: relative;
+      z-index: 3;
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .page-hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(212, 175, 55, 0.12);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      padding: 0.5rem 1.25rem;
+      border-radius: var(--radius-full);
+      color: var(--gold-light);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+    .page-hero__title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: white;
+      max-width: 750px;
+      margin-bottom: 1.5rem;
+    }
+    .page-hero__sub {
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 600px;
+      line-height: 1.7;
+    }
+
+    /* ============================================
+       SECTIONS — Consistent card styling
+       ============================================ */
+    .section { padding: 5rem 1.5rem; position: relative; background: var(--cream-light); z-index: 2; }
+    .section--alt { background: var(--white); }
+    .container { max-width: 1200px; margin: 0 auto; width: 100%; }
+    .section-header { max-width: 640px; margin-bottom: 3rem; }
+    .section-header--center { text-align: center; margin-left: auto; margin-right: auto; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .eyebrow::before { content: ''; width: 24px; height: 2px; background: var(--gold); border-radius: var(--radius-full); }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-sub { color: var(--gray-mid); font-size: 1.125rem; line-height: 1.7; }
+
+    /* Cards */
+    .value-card, .mission-card {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      transition: all var(--transition-base);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
+      height: 100%;
+      text-align: center;
+    }
+    .value-card:hover, .mission-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold);
+      box-shadow: 0 15px 30px -12px rgba(212, 175, 55, 0.2);
+    }
+    .value-card__icon {
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+    .mission-card__icon {
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .value-card h4, .mission-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    .team-card {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      transition: all var(--transition-base);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      text-align: center;
+    }
+    .team-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+    }
+    .team-card__avatar {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, var(--navy-deep), var(--navy-soft));
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      font-family: 'Playfair Display', serif;
+    }
+    .team-card h4 { font-family: 'Playfair Display', serif; font-weight: 700; margin-bottom: 0.25rem; }
+    .team-card__role { color: var(--gold-dark); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; display: block; margin-bottom: 0.75rem; }
+    .team-card p { color: var(--gray-mid); font-size: 0.875rem; }
+
+    /* Story section */
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .story-image {
+      background: linear-gradient(135deg, var(--navy-deep), var(--navy-soft));
+      border-radius: var(--radius-2xl);
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+    @media (max-width: 768px) {
+      .story-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .nav__links { display: none; }
+      .nav__hamburger { display: block; }
+      .nav.scrolled .nav__links.open { display: flex; flex-direction: column; position: absolute; top: 80px; left: 0; right: 0; background: rgba(10,12,16,0.95); backdrop-filter: blur(12px); padding: 1.5rem; gap: 1rem; border-bottom: 1px solid rgba(212,175,55,0.3); }
+      .nav__links.open { display: flex !important; }
+      .value-card, .team-card { margin-bottom: 1rem; }
+    }
+
+    /* CTA Band */
+    .cta-band {
+      background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-soft) 100%);
+      border-radius: var(--radius-2xl);
+      margin: 1.5rem;
+      padding: 4rem 3rem;
+      position: relative;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      z-index: 2;
+      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.2);
+    }
+    .cta-band h2, .cta-band p { color: white; }
+    .btn-white {
+      background: var(--gold);
+      color: var(--black);
+      padding: 1rem 2rem;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      transition: all var(--transition-base);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-white:hover { background: var(--gold-light); transform: translateY(-3px); box-shadow: var(--shadow-gold); }
+
+    /* Footer */
+    .footer {
+      background: var(--black);
+      color: var(--gray-mid);
+      padding: 4rem 1.5rem 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    .footer h4, .footer h5 { color: white; margin-bottom: 1rem; font-family: 'Playfair Display', serif; }
+    .footer__link { color: var(--gray-mid); transition: color var(--transition-base); }
+    .footer__link:hover { color: var(--gold); }
+  </style>
 </head>
 <body>
 
-  <!-- ══════════════════════════════════════════ NAVIGATION -->
-  <nav class="nav" role="navigation" aria-label="Main navigation">
-    <div class="container nav__inner">
-      <a href="index.html" class="nav__logo" aria-label="Maluti Peak Solutions home">
-        <img src="images/logo.png" alt="Maluti Peak Solutions logo" class="nav__logo-img" loading="lazy" />
-        <div class="nav__logo-text" style="display:none;">MPS<div class="nav__logo-sub">Maluti Peak Solutions</div></div>
-      </a>
-      <ul class="nav__links" id="navLinks">
-        <li class="nav__item"><a href="index.html"    class="nav__link">Home</a></li>
-        <li class="nav__item"><a href="about.html"    class="nav__link nav__link--active">About</a></li>
-        <li class="nav__item">
-          <a href="services.html" class="nav__link nav__link--has-dropdown" aria-haspopup="true">Services</a>
-          <ul class="nav__dropdown">
-            <li><a href="services/website-design.html"       class="nav__dropdown-link"><i class="bi bi-globe2 me-2"></i>Website Design</a></li>
-            <li><a href="services/blog-creation.html"        class="nav__dropdown-link"><i class="bi bi-pencil-square me-2"></i>Blog Creation</a></li>
-            <li><a href="services/cv-design.html"            class="nav__dropdown-link"><i class="bi bi-file-person me-2"></i>CV Design</a></li>
-            <li><a href="services/statistical-analysis.html" class="nav__dropdown-link"><i class="bi bi-graph-up me-2"></i>Statistical Analysis</a></li>
-          </ul>
-        </li>
-        <li class="nav__item"><a href="blog.html"      class="nav__link">Blog</a></li>
-        <li class="nav__item"><a href="portfolio.html" class="nav__link">Portfolio</a></li>
-        <li class="nav__item"><a href="contact.html"   class="nav__link">Contact</a></li>
-      </ul>
-      <a href="contact.html" class="nav__cta">Get in Touch</a>
-      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
+<!-- CURSOR LIGHT -->
+<div class="cursor-light" id="cursorLight"></div>
 
-  <!-- ══════════════════════════════════════════ PAGE HERO -->
-  <div class="page-hero">
-    <div class="container" data-aos="fade-up">
-      <span class="section__tag" style="background:rgba(245,166,35,0.15);color:var(--gold);">
-        <i class="bi bi-book-open me-1"></i> Our Story
-      </span>
-      <h1 class="text-white mb-3">About Maluti Peak Solutions</h1>
-      <p class="text-light">A student-led consultancy built on the belief that digital opportunity should reach everyone — not just those who can afford to pay premium prices.</p>
+<!-- FLOATING BLOBS -->
+<div class="blob one"></div>
+<div class="blob two"></div>
+<div class="blob three"></div>
+
+<nav class="nav" id="mainNav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">
+      <img src="images/logo.png" alt="Maluti Peak Solutions" class="nav__logo-img" onerror="this.style.display='none'" />
+      <div class="nav__logo-text">
+        <div class="nav__logo-name">Maluti Peak</div>
+        <div class="nav__logo-sub">Solutions</div>
+      </div>
+    </a>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="index.html" class="nav__link">Home</a></li>
+      <li><a href="about.html" class="nav__link nav__link--active">About</a></li>
+      <li><a href="services.html" class="nav__link">Services</a></li>
+      <li><a href="blog.html" class="nav__link">Blog</a></li>
+      <li><a href="contact.html" class="nav__link">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav__cta">Get in Touch <i class="bi bi-arrow-right-short"></i></a>
+    <button class="nav__hamburger" id="hamburger"><i class="bi bi-list"></i></button>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero__container">
+    <div class="page-hero__badge"><i class="bi bi-book-open me-2"></i> Our Story</div>
+    <h1 class="page-hero__title">About Maluti Peak Solutions</h1>
+    <p class="page-hero__sub">A student-led consultancy built on the belief that digital opportunity should reach everyone — not just those who can afford premium prices.</p>
+  </div>
+</section>
+
+<!-- STORY SECTION -->
+<section class="section">
+  <div class="container">
+    <div class="story-grid">
+      <div data-aos="fade-right">
+        <p class="eyebrow">How We Started</p>
+        <h2 class="section-title">Born from a Simple Observation</h2>
+        <p class="section-sub" style="margin-bottom: 1rem;">We noticed something that many in Lesotho already know: talented people — students finishing degrees, entrepreneurs starting businesses, researchers completing studies — often lack access to the digital tools and professional services they need to move forward.</p>
+        <p class="section-sub">Hiring a web designer abroad is expensive. Getting a CV professionally designed costs money many students don't have. Statistical analysis support for a dissertation can be nearly impossible to find locally at a reasonable rate.</p>
+        <p class="section-sub" style="margin-top: 1rem;">Maluti Peak Solutions was created to change that. We're a team of students and young professionals in Information Systems, Computer Science, and Statistics — putting our combined skills to work for our community.</p>
+      </div>
+      <div data-aos="fade-left">
+        <div class="story-image">
+          <i class="bi bi-mountains" style="font-size: 5rem; color: var(--gold); opacity: 0.6;"></i>
+        </div>
+      </div>
     </div>
   </div>
+</section>
 
-  <!-- ══════════════════════════════════════════ OUR STORY -->
-  <section class="section">
-    <div class="container">
-      <div class="row g-5 align-items-center why-grid">
-        <div class="col-lg-6" data-aos="fade-right">
-          <span class="section__tag"><i class="bi bi-stars me-1"></i> How We Started</span>
-          <h2>Born from a Simple Observation</h2>
-          <p>We noticed something that many in Lesotho already know: talented people — students finishing degrees, entrepreneurs starting businesses, researchers completing studies — often lack access to the digital tools and professional services they need to move forward.</p>
-          <p>Hiring a web designer abroad is expensive. Getting a CV professionally designed costs money many students don't have. Statistical analysis support for a dissertation can be nearly impossible to find locally at a reasonable rate.</p>
-          <p>Maluti Peak Solutions was created to change that. We're a team of students and young professionals in Information Systems, Computer Science, and Statistics — putting our combined skills to work for our community.</p>
+<!-- MISSION & VISION CARDS -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-6" data-aos="fade-up">
+        <div class="mission-card">
+          <i class="bi bi-bullseye mission-card__icon"></i>
+          <h3>Our Mission</h3>
+          <p>To provide accessible, affordable, and professional digital solutions that help students, entrepreneurs, and small businesses improve their online presence, professional image, and academic productivity.</p>
         </div>
-        <div class="col-lg-6" data-aos="fade-left">
-          <div class="why-image">
-            <i class="bi bi-mountains" style="font-size:4rem; color:rgba(255,255,255,0.35);"></i>
-          </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="mission-card" style="background: var(--navy-deep); border-color: var(--gold);">
+          <i class="bi bi-rocket-takeoff-fill mission-card__icon" style="color: var(--gold);"></i>
+          <h3 style="color: white;">Our Vision</h3>
+          <p style="color: rgba(255,255,255,0.85);">To become a trusted and innovative digital consultancy recognised for empowering individuals and businesses through creative, reliable, and modern digital solutions.</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ══════════════════════════════════════════ MISSION & VISION -->
-  <section class="section section--alt">
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="0">
-          <div class="card border-0 shadow-sm h-100">
-            <div class="card-body p-4">
-              <i class="bi bi-bullseye" style="font-size:2.5rem; color:var(--blue); display:block; margin-bottom:1.25rem;"></i>
-              <h3 class="card-title fw-700 mb-3">Our Mission</h3>
-              <p class="card-text">To provide accessible, affordable, and professional digital solutions that help students, entrepreneurs, and small businesses improve their online presence, professional image, and academic productivity.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-          <div class="card border-0 shadow-sm h-100" style="background:var(--navy);">
-            <div class="card-body p-4">
-              <i class="bi bi-rocket-takeoff-fill" style="font-size:2.5rem; color:var(--gold); display:block; margin-bottom:1.25rem;"></i>
-              <h3 class="card-title fw-700 mb-3" style="color:var(--white);">Our Vision</h3>
-              <p class="card-text" style="color:rgba(255,255,255,0.85);">To become a trusted and innovative digital consultancy recognised for empowering individuals and businesses through creative, reliable, and modern digital solutions.</p>
-            </div>
-          </div>
-        </div>
-      </div>
+<!-- CORE VALUES -->
+<section class="section">
+  <div class="container">
+    <div class="section-header section-header--center" data-aos="fade-up">
+      <p class="eyebrow">Core Values</p>
+      <h2 class="section-title">What Guides Our Work</h2>
+      <p class="section-sub">These four principles aren't just words on a wall — they're the standards we hold ourselves to in every project.</p>
     </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════ CORE VALUES -->
-  <section class="section">
-    <div class="container">
-      <div class="section__header" data-aos="fade-up">
-        <span class="section__tag"><i class="bi bi-trophy me-1"></i> Core Values</span>
-        <h2>What Guides Our Work</h2>
-        <p>These four principles aren't just words on a wall — they're the standards we hold ourselves to in every project.</p>
-      </div>
-      <div class="row g-4">
-        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
-          <div class="value-card card border-0 shadow-sm p-4 h-100 text-center">
-            <i class="bi bi-patch-check-fill value-card__icon"></i>
-            <h4 class="mt-3 fw-700">Professionalism</h4>
-            <p>We treat every project — big or small — with the same level of care and discipline. Deadlines respected. Quality maintained.</p>
-          </div>
-        </div>
-        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-          <div class="value-card card border-0 shadow-sm p-4 h-100 text-center">
-            <i class="bi bi-lightbulb-fill value-card__icon"></i>
-            <h4 class="mt-3 fw-700">Innovation</h4>
-            <p>We stay current with tools, trends, and techniques so that our clients get modern solutions, not outdated ones.</p>
-          </div>
-        </div>
-        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-          <div class="value-card card border-0 shadow-sm p-4 h-100 text-center">
-            <i class="bi bi-unlock-fill value-card__icon"></i>
-            <h4 class="mt-3 fw-700">Accessibility</h4>
-            <p>Affordable pricing, clear communication, and services designed for people who aren't necessarily tech-savvy.</p>
-          </div>
-        </div>
-        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-          <div class="value-card card border-0 shadow-sm p-4 h-100 text-center">
-            <i class="bi bi-shield-check value-card__icon"></i>
-            <h4 class="mt-3 fw-700">Reliability</h4>
-            <p>We do what we say we'll do. If something changes, we communicate — we don't disappear.</p>
-          </div>
-        </div>
-      </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3" data-aos="fade-up"><div class="value-card"><i class="bi bi-patch-check-fill value-card__icon"></i><h4>Professionalism</h4><p>We treat every project — big or small — with the same care and discipline. Deadlines respected. Quality maintained.</p></div></div>
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100"><div class="value-card"><i class="bi bi-lightbulb-fill value-card__icon"></i><h4>Innovation</h4><p>We stay current with tools, trends, and techniques so that our clients get modern solutions, not outdated ones.</p></div></div>
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200"><div class="value-card"><i class="bi bi-unlock-fill value-card__icon"></i><h4>Accessibility</h4><p>Affordable pricing, clear communication, and services designed for people who aren't necessarily tech-savvy.</p></div></div>
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300"><div class="value-card"><i class="bi bi-shield-check value-card__icon"></i><h4>Reliability</h4><p>We do what we say we'll do. If something changes, we communicate — we don't disappear.</p></div></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ══════════════════════════════════════════ TEAM -->
-  <section class="section section--alt">
-    <div class="container">
-      <div class="section__header" data-aos="fade-up">
-        <span class="section__tag"><i class="bi bi-people me-1"></i> The Team</span>
-        <h2>The People Behind MPS</h2>
-        <p>We're students and young professionals who bring complementary skills together under one roof.</p>
-      </div>
-
-      <div class="row g-4">
-        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
-          <div class="team-card text-center">
-            <div class="team-card__avatar">T</div>
-            <h4>[Team Member Name]</h4>
-            <span class="team-card__role">Founder &amp; Lead Developer</span>
-            <p>Information Systems · Web Development · Project Lead</p>
-          </div>
-        </div>
-        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-          <div class="team-card text-center">
-            <div class="team-card__avatar">M</div>
-            <h4>[Team Member Name]</h4>
-            <span class="team-card__role">Design &amp; Content Lead</span>
-            <p>UI/UX Design · Blog Setup · CV Design</p>
-          </div>
-        </div>
-        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-          <div class="team-card text-center">
-            <div class="team-card__avatar">L</div>
-            <h4>[Team Member Name]</h4>
-            <span class="team-card__role">Data &amp; Analytics</span>
-            <p>Statistics · SPSS · R · Python · Excel</p>
-          </div>
-        </div>
-        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-          <div class="team-card text-center">
-            <div class="team-card__avatar"><i class="bi bi-plus-lg"></i></div>
-            <h4>Join the Team</h4>
-            <span class="team-card__role">Open Position</span>
-            <p>We're growing. Reach out if you'd like to collaborate.</p>
-          </div>
-        </div>
-      </div>
-
-      <p class="text-center mt-4" style="font-size:0.875rem; color:var(--text-muted);">
-        <i class="bi bi-info-circle me-1"></i>
-        <em>Replace the placeholder cards above with your actual team members before going live.</em>
-      </p>
+<!-- TEAM SECTION -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-header section-header--center" data-aos="fade-up">
+      <p class="eyebrow">The Team</p>
+      <h2 class="section-title">The People Behind MPS</h2>
+      <p class="section-sub">We're students and young professionals who bring complementary skills together under one roof.</p>
     </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════ CTA BANNER -->
-  <section class="cta-banner" aria-label="Call to action">
-    <div class="container py-5 text-center" data-aos="zoom-in">
-      <h2 class="mb-3"><i class="bi bi-handshake me-2"></i>Ready to Work Together?</h2>
-      <p class="lead mb-4">Whether you need a website, a CV, or help with your research data — we're here and ready to help.</p>
-      <div class="d-flex gap-3 justify-content-center flex-wrap">
-        <a href="contact.html"  class="btn btn--primary btn-lg"><i class="bi bi-envelope-fill me-2"></i>Get in Touch</a>
-        <a href="services.html" class="btn btn--outline btn-lg"><i class="bi bi-grid-fill me-2"></i>Our Services</a>
-      </div>
+    <div class="row g-4">
+      <div class="col-6 col-lg-3" data-aos="fade-up"><div class="team-card"><div class="team-card__avatar">T</div><h4>Thabo N.</h4><span class="team-card__role">Founder & Lead Developer</span><p>Information Systems · Web Development · Project Lead</p></div></div>
+      <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="100"><div class="team-card"><div class="team-card__avatar">M</div><h4>Mpho L.</h4><span class="team-card__role">Design & Content Lead</span><p>UI/UX Design · Blog Setup · CV Design</p></div></div>
+      <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="200"><div class="team-card"><div class="team-card__avatar">L</div><h4>Lineo M.</h4><span class="team-card__role">Data & Analytics</span><p>Statistics · SPSS · R · Python · Excel</p></div></div>
+      <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="300"><div class="team-card"><div class="team-card__avatar"><i class="bi bi-plus-lg" style="font-size: 2rem;"></i></div><h4>Join the Team</h4><span class="team-card__role">Open Position</span><p>We're growing. Reach out if you'd like to collaborate.</p></div></div>
     </div>
-  </section>
+    <p class="text-center mt-4" style="font-size:0.875rem; color: var(--gray-mid);"><i class="bi bi-info-circle me-1"></i><em>Contact us to learn about team opportunities.</em></p>
+  </div>
+</section>
 
-  <!-- ══════════════════════════════════════════ FOOTER -->
-  <footer class="footer" role="contentinfo">
-    <div class="container">
-      <div class="row g-4 footer__top">
-        <div class="col-lg-4 footer__brand">
-          <img src="images/logo.png" alt="Maluti Peak Solutions" class="footer__logo" loading="lazy" />
-          <p class="mt-3">A student-led digital consultancy providing affordable, modern digital services to students, entrepreneurs, and small businesses in Lesotho.</p>
-          <div class="footer__social mt-3">
-            <a href="#" class="footer__social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="footer__social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="footer__social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-            <a href="#" class="footer__social-link" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-          </div>
-        </div>
-        <div class="col-6 col-md-4 col-lg-2">
-          <p class="footer__col-title">Services</p>
-          <ul class="footer__links">
-            <li><a href="services/website-design.html"       class="footer__link">Website Design</a></li>
-            <li><a href="services/blog-creation.html"        class="footer__link">Blog Creation</a></li>
-            <li><a href="services/cv-design.html"            class="footer__link">CV Design</a></li>
-            <li><a href="services/statistical-analysis.html" class="footer__link">Statistical Analysis</a></li>
-          </ul>
-        </div>
-        <div class="col-6 col-md-4 col-lg-2">
-          <p class="footer__col-title">Company</p>
-          <ul class="footer__links">
-            <li><a href="about.html"     class="footer__link">About Us</a></li>
-            <li><a href="portfolio.html" class="footer__link">Portfolio</a></li>
-            <li><a href="blog.html"      class="footer__link">Blog</a></li>
-            <li><a href="contact.html"   class="footer__link">Contact</a></li>
-          </ul>
-        </div>
-        <div class="col-md-4 col-lg-4">
-          <p class="footer__col-title">Contact</p>
-          <ul class="footer__links">
-            <li><a href="mailto:info@malutipeak.co.ls" class="footer__link"><i class="bi bi-envelope me-2"></i>info@malutipeak.co.ls</a></li>
-            <li><a href="tel:+26658398399"             class="footer__link"><i class="bi bi-telephone me-2"></i>+266 58 398 399</a></li>
-            <li><span class="footer__link"><i class="bi bi-geo-alt me-2"></i>Maseru, Lesotho</span></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer__bottom">
-        <span>&copy; <span id="year"></span> Maluti Peak Solutions. All rights reserved.</span>
-        <span>Designed &amp; Built in Lesotho 🇱🇸</span>
-      </div>
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="cta-inner" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;">
+    <div><h2><i class="bi bi-handshake me-2"></i>Ready to Work Together?</h2><p>Whether you need a website, a CV, or help with your research data — we're here and ready to help.</p></div>
+    <div><a href="contact.html" class="btn-white">Get in Touch <i class="bi bi-envelope-fill"></i></a></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__grid" style="display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; max-width:1200px; margin:0 auto;">
+      <div class="footer__brand"><h4>Maluti Peak Solutions</h4><p>Student-led digital consultancy based in Maseru, Lesotho.</p><div class="footer__social mt-3"><a href="#" class="footer__link me-3"><i class="bi bi-facebook"></i></a><a href="#" class="footer__link me-3"><i class="bi bi-instagram"></i></a><a href="#" class="footer__link"><i class="bi bi-linkedin"></i></a></div></div>
+      <div><h5>Services</h5><ul><li><a href="services.html" class="footer__link">Web Design</a></li><li><a href="services.html" class="footer__link">CV Design</a></li><li><a href="services.html" class="footer__link">Blog Creation</a></li><li><a href="services.html" class="footer__link">Statistical Analysis</a></li></ul></div>
+      <div><h5>Company</h5><ul><li><a href="about.html" class="footer__link">About</a></li><li><a href="#" class="footer__link">Portfolio</a></li><li><a href="#" class="footer__link">Blog</a></li><li><a href="contact.html" class="footer__link">Contact</a></li></ul></div>
+      <div><h5>Connect</h5><ul><li><a href="mailto:info@malutipeak.co.ls" class="footer__link"><i class="bi bi-envelope"></i> info@malutipeak.co.ls</a></li><li><a href="tel:+26658398399" class="footer__link"><i class="bi bi-telephone"></i> +266 58 398 399</a></li><li><span class="footer__link"><i class="bi bi-geo-alt"></i> Maseru, Lesotho</span></li></ul></div>
     </div>
-  </footer>
+    <div class="footer__bottom" style="text-align:center; margin-top:2rem;"><span>© 2026 Maluti Peak Solutions — Built in Lesotho 🇱🇸</span></div>
+  </div>
+</footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script src="js/main.js"></script>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    AOS.init({ once: true, offset: 60, duration: 600 });
-  </script>
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+  
+  const cursor = document.getElementById("cursorLight");
+  document.addEventListener("mousemove", (e) => {
+    gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.4, ease: "power2.out" });
+    document.documentElement.style.setProperty("--x", e.clientX + "px");
+    document.documentElement.style.setProperty("--y", e.clientY + "px");
+  });
+  
+  const nav = document.getElementById("mainNav");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 20) nav.classList.add("scrolled");
+    else nav.classList.remove("scrolled");
+  });
+  
+  // GSAP scroll animations
+  gsap.utils.toArray(".story-grid, .mission-card, .value-card, .team-card, .cta-band").forEach(el => {
+    gsap.from(el, {
+      scrollTrigger: { trigger: el, start: "top 85%", toggleActions: "play none none reverse" },
+      opacity: 0,
+      y: 50,
+      duration: 0.9,
+      ease: "power3.out"
+    });
+  });
+  
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("navLinks");
+  if (hamburger) hamburger.addEventListener("click", () => navLinks.classList.toggle("open"));
+</script>
 </body>
 </html>
